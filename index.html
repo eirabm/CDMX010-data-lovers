@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="style.css" />
     <title>Data Lovers</title>
   </head>
@@ -14,17 +14,17 @@
     <!-- Barra de navegación -->
     <div class="menu">
       <ul>
-        <li>Novedades</li>
-        <li>Colecciones</li>
-        <li>Sale</li>
+        <li class="navbar">Novedades</li>
+        <li class="navbar">Colecciones</li>
+        <li class="navbar">Sale</li>
         <li><img src="imagenes/Título.PNG" class="name"></li>
-        <li>Sucursales</li>
-        <li>Contacto</li>
-        <li><img src="imagenes/profile-user.png" class="user"></li>
-        <li><img src="imagenes/buy.png" class="car"></li>
+        <li class="navbar">Sucursales</li>
+        <li class="navbar">Contacto</li>
+        <li class="navbar"><img src="imagenes/profile-user.png" class="user"></li>
+        <li class="navbar"><img src="imagenes/buy.png" class="car"></li>
       </ul>
     </div>
-    <hr>
+    <hr class="endNavbar">
 
     <!-- Buscar Pokempon por nombre -->
     <div class="search">
@@ -37,13 +37,24 @@
         </div>
         </div>
         <hr class="line">
-      </section>      
+      </section>
+
+       <!-- Lista de Pokemones -->
+        <div class="pokemonList">
+          <section class="pokemons">            
+            <p class="pokemones">POKEMONES</p>
+            <p>Lista de pokemones</p>
+            <p>Lista de pokemones</p>
+          </section>
+        </div>
+    </div>  
+      
     <!-- Filtros -->
-    <div>
-      <section class="filter">        
+    <div class="filter">
+      <section>        
           <ul>
-            <li><p>Filtros</p></li>
-            <li><p>Nombre</p></li>
+            <li><p class="filtros">Filtros</p></li>
+            <li><p class="nombre">Nombre</p></li>
 
             <div class="alphabet">          
             <li><input type="checkbox"></li>
@@ -55,7 +66,7 @@
             <p class="az">Nombre alfabético (Z-A)</p>
             </div>
 
-            <li><p >Tipo</p></li>  
+            <li><p class="tipo" >Tipo</p></li>  
 
             <div class="alphabet">           
             <li><input type="checkbox"></li>
@@ -147,7 +158,7 @@
             <p class="az">Agua</p>
             </div>
 
-            <li><p>Número de caramelos</p></li>
+            <li><p class="caramelos">Número de caramelos</p></li>
             
             <div class="alphabet"> 
             <li><input type="checkbox"></li>
@@ -183,16 +194,10 @@
             <li></li>
           </ul>        
       </section>
-    </div>      
+    </div>
     </div>
 
-    <!-- Pokemones -->
-    <div>
-      <container class="pokemons">
-        <p>POKEMONES</p>
-      </container>
-    </div>
-
+   
    
 
 
