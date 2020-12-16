@@ -96,6 +96,7 @@
     margin: 0%;  
 }
 
-/* input [type="checkbox"]{
-    vertical-align: middle;  
-} */
+.pokemons{
+    display: flex;
+    float: left;
+}
