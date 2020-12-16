@@ -1,0 +1,101 @@
+.menu ul{
+    display: flex;
+    align-self: center;
+    list-style: none;
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    margin: 0%;
+    padding: 0%;
+}
+
+.menu{
+    border-color: black 2px;
+}
+
+.menu ul li{    
+    display: inline-block;
+    padding: 37px;
+    align-items: center;  
+}
+
+.name{
+    width: 100%;
+    max-width: 200px; 
+    /* padding-top: -10px; */
+}
+
+.user{
+    width: 100%;
+    max-width: 30px; 
+}
+
+.car{
+    width: 100%;
+    max-width: 30px; 
+}
+
+.findPokemon{
+    font-family: 'Heebo', sans-serif;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.favoritePokemon{
+    margin-left: 33px;
+}
+
+.favoritePokemon{
+    font-size: 15px;
+}
+
+.pokemonName{
+    margin-left: 33px;
+    width: 207px;
+}
+
+
+.searchName{
+    margin-left: 33px;
+    width: 215px; 
+    margin-top: 10px;
+    background-color: #0E918C;
+    color: white
+}
+
+.search{
+    width: 270px;
+    position: absolute;
+}
+
+.line{
+    margin-left: 18px;
+    margin-top: 20px;
+}
+
+.filter ul{
+    font-family: 'Heebo', sans-serif;
+    list-style: none;
+}
+
+.searchFilter{
+    margin-left: 33px;
+    width: 215px; 
+    margin-top: 10px;
+    background-color: #0E918C;
+    color: white
+}
+
+.alphabet{
+    display: flex;    
+}
+
+.az{
+    margin: 0%;  
+}
+
+/* input [type="checkbox"]{
+    vertical-align: middle;  
+} */
