@@ -12,16 +12,20 @@
     border-color: black 2px;
 }
 
-.menu ul li{    
+.navbar{    
     display: inline-block;
-    padding: 37px;
-    align-items: center;  
+    padding-top: 28px;
+    padding-left: 40px;
+    padding-right: 40px;
+    align-items: center;
+    font-weight: bold;  
 }
 
 .name{
     width: 100%;
     max-width: 200px; 
-    /* padding-top: -10px; */
+    margin-top: 12px;
+    padding-left: 10px;
 }
 
 .user{
@@ -32,6 +36,11 @@
 .car{
     width: 100%;
     max-width: 30px; 
+}
+
+.endNavbar{
+    background-color: #c4c4c4;
+    width: 100%;
 }
 
 .findPokemon{
@@ -45,6 +54,7 @@
 
 .favoritePokemon{
     margin-left: 33px;
+    font-weight: bold;    
 }
 
 .favoritePokemon{
@@ -52,40 +62,73 @@
 }
 
 .pokemonName{
+    margin-top: 8px;
     margin-left: 33px;
     width: 207px;
+    padding: 3px;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    border:1px #B4B2B2 solid;
+    outline: none;  
 }
 
 
 .searchName{
     margin-left: 33px;
+    border-radius: 6px;
+    padding: 3px;
     width: 215px; 
-    margin-top: 10px;
+    margin-top: 19px;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    outline: none;  
     background-color: #0E918C;
+    border: 2px #0E918C solid;
     color: white
 }
 
-.search{
+.searchName:hover{
+    cursor: pointer;
+}
+
+.search{   
+    display: flex;
+    flex-direction: row; 
     width: 270px;
     position: absolute;
 }
 
 .line{
     margin-left: 18px;
-    margin-top: 20px;
+    margin-top: 27px;
+    background-color: #c4c4c4;
 }
 
 .filter ul{
     font-family: 'Heebo', sans-serif;
     list-style: none;
+    margin-top: 155px;
+    width: 270px;
+    position: absolute;
 }
 
-.searchFilter{
-    margin-left: 33px;
+.searchFilter{    
+    border-radius: 6px;
+    padding: 3px;
     width: 215px; 
-    margin-top: 10px;
+    margin-top: 19px;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    outline: none;  
     background-color: #0E918C;
+    border: 2px #0E918C solid;
     color: white
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+}
+
+.searchFilter:hover{
+    cursor: pointer;
 }
 
 .alphabet{
@@ -94,9 +137,42 @@
 
 .az{
     margin: 0%;  
+    font-size: 14px;
+    margin-left: 6px;  
 }
 
-.pokemons{
-    display: flex;
-    float: left;
+.filtros{
+    font-size: 18px;
+    font-weight: bold;
 }
+
+.nombre{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tipo{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.caramelos{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pokemonList{
+    display: flex;    
+    flex-direction: column;
+    margin-left: 56px;
+}
+
+
+.pokemones{    
+    font-size: 20px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: bolder;
+    padding-left: 400px;
+    
+}
+
