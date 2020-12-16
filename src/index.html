@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
+    <meta charset="utf-8">    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <title>Data Lovers</title>
   </head>
+
   <body>
+    <!-- Barra de navegación -->
+    <div class="menu">
+      <ul>
+        <li>Novedades</li>
+        <li>Colecciones</li>
+        <li>Sale</li>
+        <li><img src="imagenes/Título.PNG" class="name"></li>
+        <li>Sucursales</li>
+        <li>Contacto</li>
+        <li><img src="imagenes/profile-user.png" class="user"></li>
+        <li><img src="imagenes/buy.png" class="car"></li>
+      </ul>
+    </div>
+    <hr>
+
+    <!-- Buscar Pokempon por nombre -->
+    <div class="search">
+      <section>
+        <div class="findPokemon">
+          <p class="favoritePokemon">¡Encuentra tu Pokemón favorito!</p>
+          <div class="flexbox">
+          <input type="text" placeholder="Nombre" class="pokemonName">
+          <button type="button" class="searchName">Buscar</button>        
+        </div>
+        </div>
+        <hr class="line">
+      </section>      
+    <!-- Filtros -->
+    <div>
+      <section class="filter">        
+          <ul>
+            <li><p>Filtros</p></li>
+            <li><p>Nombre</p></li>
+            <div class="alphabet">          
+            <li><input type="checkbox"></li>
+            <p class="az">Nombre alfabético (A-Z)</p>
+            </div>
+            <div class="alphabet">   
+            <li><input type="checkbox" class="az"><p>Nombre alfabético (Z-A)</p></li>
+            </div>            
+            <li><p>Tipo</p></li>            
+            <li><input type="checkbox"><p>Bicho</p></li>
+            <li><input type="checkbox"><p>Siniestro</p></li>
+            <li><input type="checkbox"><p>Dragón</p></li>
+            <li><input type="checkbox"><p>Eléctrico</p></li>
+            <li><input type="checkbox"><p>Hada</p></li>
+            <li><input type="checkbox"><p>Lucha</p></li>
+            <li><input type="checkbox"><p>Fuego</p></li>
+            <li><input type="checkbox"><p>Volador</p></li>
+            <li><input type="checkbox"><p>Fantasma</p></li>
+            <li><input type="checkbox"><p>Planta</p></li>
+            <li><input type="checkbox"><p>Tierra</p></li>
+            <li><input type="checkbox"><p>Hielo</p></li>
+            <li><input type="checkbox"><p>Normal</p></li>
+            <li><input type="checkbox"><p>Veneno</p></li>
+            <li><input type="checkbox"><p>Psiquico</p></li>
+            <li><input type="checkbox"><p>Roca</p></li>
+            <li><input type="checkbox"><p>Acero</p></li>
+            <li><input type="checkbox"><p>Agua</p></li>          
+            <li><p>Número de caramelos</p></li>
+            <li><input type="checkbox"><p>1</p></li>
+            <li><input type="checkbox"><p>3</p></li>
+            <li><input type="checkbox"><p>25</p></li>
+            <li><input type="checkbox"><p>50</p></li>
+            <li><input type="checkbox"><p>100</p></li>
+            <li><input type="checkbox"><p>400</p></li>
+            <button type="button" class="searchFilter">Buscar</button>
+            <li></li>
+          </ul>        
+      </section>
+    </div>
+      
+    </div>
+
+   
+
+
+
+
     <div id="root"></div>
     <script src="main.js" type="module"></script>
   </body>
