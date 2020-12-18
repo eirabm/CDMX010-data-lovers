@@ -6,13 +6,18 @@ import data from './data/pokemon/pokemon.js';
 var poks = data;
  var pokemons = poks.pokemon; 
 
+
  for (let i = 0; i < pokemons.length; i++){
-     let name= (pokemons[i].name);
-     document.getElementById("pokemonss").innerHTML += name;
- }
+    
+    let name= (pokemons[i].name);
+    let imagen= (pokemons[i].img);
+    let candys= (pokemons[i].candy-cost);
 
-
-
-//for (var i = 0; i < pokemones.length; i++){
-//    console.log(pokemones.name[i]);
-//}
+    document.getElementById("pokemonss").innerHTML += `
+        <div class = "cadaPokemon"> 
+        <img src="${imagen}">
+        <h2> ${name} </h2>
+        <p> ${candys} </p>
+        </div>
+    `
+}
