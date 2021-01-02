@@ -19,6 +19,7 @@
     padding-right: 40px;
     align-items: center;
     font-weight: bold;  
+    align-items: space-between;
 }
 
 .name{
@@ -125,6 +126,7 @@
 .filter{
     display: flex;
     flex-direction: row;
+
 }
 
 .searchFilter:hover{
@@ -168,12 +170,10 @@
 }
 
 
-.pokemones{    
-    font-size: 20px;
+.pokemons{    
     font-family: 'Heebo', sans-serif;
     font-weight: bolder;
-    padding-left: 400px;
-    
+    padding-left: 150px;
 }
 
 /*Esta parte da formato a las fichas del pokemon */
@@ -187,8 +187,17 @@
     max-width: 1200px;
 }
 
+.pokemonCard {
+	background-color: #eee;
+	border-radius: 20px;
+	box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+}
 
-.imgContainer {
+
+.pokemonCard .imgContainer {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
 	width: 120px;
@@ -196,23 +205,23 @@
 	text-align: center;
 }
 
-.imgContainer img {
+.pokemonCard .imgContainer img {
 	margin-top: 20px;
 	max-width: 90%;
 }
 
-.info {
-	margin-top: 20px;
+.pokemonCard .info {
+	margin-top: 10px;
 }
 
-.number {
+.pokemonCard .number {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 	font-size: 0.8em;
 	padding: 5px 10px;
 }
 
-.name {
+.pokemonCard .name {
 	margin: 15px 0 7px;
 	letter-spacing: 1px;
 }

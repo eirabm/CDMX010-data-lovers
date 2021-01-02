@@ -27,11 +27,6 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-const mainTypes = Object.keys(colors);
-
-
-const nombres = [];
-const imagenes = [];
 
 
  for (let i = 0; i < pokemons.length; i++){
@@ -41,24 +36,26 @@ const imagenes = [];
     let imagen = pokemons[i].img;
     let number = pokemons[i].num;
 
+    let color = colors[pokeTypes];
+    
+
     document.getElementById("pokemonss").innerHTML += `
-    <class= "pokemonCard"> 
+    <div class= "pokemonCard" style="background-color:${color}"> 
     <div class="imgContainer">
     <img src="${imagen}"/> </div>
     <div class="info">
-    <span class= "number"> ${number} </span>
+    <span class= "number"> # ${number} </span>
     <h3 class"name">${name} </h3>
     <small class="type"> Tipo: <span>${pokeTypes} </span></small>
     </div>
+    </div>
     `
 
-   nombres.push(name);
-   imagenes.push(imagen);
+   /*nombres.push(name);
+   imagenes.push(imagen);*/
 }
 
 
-
-
-arrayNombres.sort();
-console.log(arrayNombres);
+/*arrayNombres.sort();
+console.log(arrayNombres);*/ 
 
