@@ -8,12 +8,12 @@ const pokemons = poks.pokemon;
 
 const colors = {
 	fire: '#FDDFDF',
-	grass: '#DEFDE0',
-	electric: '#FCF7DE',
-	water: '#DEF3FD',
-	ground: '#f4e7da',
+	grass: '#b4ecb4',
+	electric: '#fcfc5c',
+	water: '#BED2F8',
+	ground: '#CEB493',
 	rock: '#d5d5d4',
-	fairy: '#fceaff',
+	fairy: '#F6D7DE',
 	poison: '#98d7a5',
 	bug: ' #98E690',
 	dragon: '#97b3e6',
@@ -40,7 +40,7 @@ const colors = {
     
 
     document.getElementById("pokemonss").innerHTML += `
-    <div class= "pokemonCard" style="background-color:${color}"> 
+    <div class= "pokemonCard" style="background-color:${color}; cursor: pointer" onclick= "thisPokemon()"> 
     <div class="imgContainer">
     <img src="${imagen}"/> </div>
     <div class="info">
@@ -53,6 +53,10 @@ const colors = {
 
    /*nombres.push(name);
    imagenes.push(imagen);*/
+}
+
+function thisPokemon(){
+   console.log("picaste un pokemon");
 }
 
 
