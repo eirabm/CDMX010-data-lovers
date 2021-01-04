@@ -27,14 +27,42 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
+<<<<<<< HEAD
 function water(){
    const waterType = document.getElementById("water");
    
    if(waterType.checked == true){
       console.log("agua aqui");
    } }
+=======
+/*ADQUIRIR VARIABLES POR MEDIO DE MAP
 
- for (let i = 0; i < pokemons.length; i++){
+let name = pokemons.map((pokeName) => pokeName.name);
+let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
+let imagen = pokemons.map((pokeImg) => pokeImg.img);
+let number = pokemons.map((pokeNum) => pokeNum.num);*/
+>>>>>>> 8a98144b244bb53d43fb6c720c8dfe37f8e783d9
+
+function pokeCard(pokemones){
+   return `
+   <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
+   <div class="imgContainer">
+   <img src="${pokemones.img}"/> </div>
+   <div class="info">
+   <span class= "number"> # ${pokemones.num} </span>
+   <h3 class = "name">${pokemones.name} </h3>
+   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+   </div>
+   </div>`
+}
+
+document.getElementById("pokemonss").innerHTML = `
+${pokemons.map(pokeCard).join('')}
+`
+
+/* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
+
+for (let i = 0; i < pokemons.length; i++){
     
     let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
     let pokeTypes = pokemons[i].type[0];
@@ -45,21 +73,20 @@ function water(){
     
 
     document.getElementById("pokemonss").innerHTML += `
-    <div class= "pokemonCard" style="background-color:${color}; cursor: pointer" onclick= "thisPokemon()"> 
+    <div class= "pokemonCard" style="background-color:${color}"> 
     <div class="imgContainer">
     <img src="${imagen}"/> </div>
     <div class="info">
     <span class= "number"> # ${number} </span>
-    <h3 class"name">${name} </h3>
+    <h3 class = "name">${name} </h3>
     <small class="type"> Tipo: <span>${pokeTypes} </span></small>
     </div>
     </div>
     `
-
    /*nombres.push(name);
    imagenes.push(imagen);*/
-}
 
+<<<<<<< HEAD
 function thisPokemon(){
    console.log("un cambio");
 }
@@ -69,5 +96,12 @@ function thisPokemon(){
 
 
 /*arrayNombres.sort();
+=======
+
+
+/* ESTO LOS ORDENA ALFABETICAMENTE
+
+arrayNombres.sort();
+>>>>>>> 8a98144b244bb53d43fb6c720c8dfe37f8e783d9
 console.log(arrayNombres);*/ 
 
