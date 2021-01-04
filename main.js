@@ -27,9 +27,15 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
+const name = pokemons.map((pokeName) => pokeName.name);
+const pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
+const imagen = pokemons.map((pokeImg) => pokeImg.img);
+const number = pokemons.map((pokeNum) => pokeNum.num);
+
+const color = colors[pokeTypes];
 
 
- for (let i = 0; i < pokemons.length; i++){
+/* for (let i = 0; i < pokemons.length; i++){
     
     let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
     let pokeTypes = pokemons[i].type[0];
@@ -40,12 +46,12 @@ const colors = {
     
 
     document.getElementById("pokemonss").innerHTML += `
-    <div class= "pokemonCard" style="background-color:${color}; cursor: pointer" onclick= "thisPokemon()"> 
+    <div class= "pokemonCard" style="background-color:${color}"> 
     <div class="imgContainer">
     <img src="${imagen}"/> </div>
     <div class="info">
     <span class= "number"> # ${number} </span>
-    <h3 class"name">${name} </h3>
+    <h3 class = "name">${name} </h3>
     <small class="type"> Tipo: <span>${pokeTypes} </span></small>
     </div>
     </div>
@@ -53,11 +59,7 @@ const colors = {
 
    /*nombres.push(name);
    imagenes.push(imagen);*/
-}
 
-function thisPokemon(){
-   console.log("picaste un pokemon");
-}
 
 
 /*arrayNombres.sort();
