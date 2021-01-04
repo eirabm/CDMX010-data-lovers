@@ -27,15 +27,31 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-const name = pokemons.map((pokeName) => pokeName.name);
-const pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
-const imagen = pokemons.map((pokeImg) => pokeImg.img);
-const number = pokemons.map((pokeNum) => pokeNum.num);
-
-const color = colors[pokeTypes];
+/*let name = pokemons.map((pokeName) => pokeName.name);
+let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
+let imagen = pokemons.map((pokeImg) => pokeImg.img);
+let number = pokemons.map((pokeNum) => pokeNum.num);*/
 
 
-/* for (let i = 0; i < pokemons.length; i++){
+
+document.getElementById("pokemonss").innerHTML = `
+${pokemons.map(function(pokemones){
+
+   return `
+   <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}">
+   <div class="imgContainer">
+   <img src="${pokemones.img}"/> </div>
+   <div class="info">
+   <span class= "number"> # ${pokemones.num} </span>
+   <h3 class = "name">${pokemones.name} </h3>
+   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+   </div>
+   </div>`
+   }).join('')
+}
+`
+
+/*for (let i = 0; i < pokemons.length; i++){
     
     let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
     let pokeTypes = pokemons[i].type[0];
@@ -56,7 +72,7 @@ const color = colors[pokeTypes];
     </div>
     </div>
     `
-
+}
    /*nombres.push(name);
    imagenes.push(imagen);*/
 
