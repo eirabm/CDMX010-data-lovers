@@ -27,7 +27,12 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-
+function water(){
+   const waterType = document.getElementById("water");
+   
+   if(waterType.checked == true){
+      console.log("agua aqui");
+   } }
 
  for (let i = 0; i < pokemons.length; i++){
     
@@ -56,8 +61,11 @@ const colors = {
 }
 
 function thisPokemon(){
-   console.log("picaste un pokemon");
+   console.log("un cambio");
 }
+
+
+
 
 
 /*arrayNombres.sort();
