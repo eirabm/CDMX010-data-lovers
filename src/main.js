@@ -27,18 +27,16 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-/*let name = pokemons.map((pokeName) => pokeName.name);
+/*ADQUIRIR VARIABLES POR MEDIO DE MAP
+
+let name = pokemons.map((pokeName) => pokeName.name);
 let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
 let imagen = pokemons.map((pokeImg) => pokeImg.img);
 let number = pokemons.map((pokeNum) => pokeNum.num);*/
 
-
-
-document.getElementById("pokemonss").innerHTML = `
-${pokemons.map(function(pokemones){
-
+function pokeCard(pokemones){
    return `
-   <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}">
+   <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
    <div class="imgContainer">
    <img src="${pokemones.img}"/> </div>
    <div class="info">
@@ -47,11 +45,15 @@ ${pokemons.map(function(pokemones){
    <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
    </div>
    </div>`
-   }).join('')
 }
+
+document.getElementById("pokemonss").innerHTML = `
+${pokemons.map(pokeCard).join('')}
 `
 
-/*for (let i = 0; i < pokemons.length; i++){
+/* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
+
+for (let i = 0; i < pokemons.length; i++){
     
     let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
     let pokeTypes = pokemons[i].type[0];
@@ -72,12 +74,13 @@ ${pokemons.map(function(pokemones){
     </div>
     </div>
     `
-}
    /*nombres.push(name);
    imagenes.push(imagen);*/
 
 
 
-/*arrayNombres.sort();
+/* ESTO LOS ORDENA ALFABETICAMENTE
+
+arrayNombres.sort();
 console.log(arrayNombres);*/ 
 
