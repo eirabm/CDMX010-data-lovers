@@ -29,6 +29,7 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
+
 /*ADQUIRIR VARIABLES POR MEDIO DE MAP
 let name = pokemons.map((pokeName) => pokeName.name);
 let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
@@ -38,7 +39,7 @@ let number = pokemons.map((pokeNum) => pokeNum.num);*/
 document.getElementById("pokemonss").innerHTML = `
 ${pokemons.map(pokeCard).join('')}
 `
-function pokeCard(pokemones){
+function pokeCard (pokemones){
    return `
    <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
    <div class="imgContainer">
@@ -62,15 +63,6 @@ for (let i = 0; i < pokemons.length; i++){
    names.push(name);  
 };
 
-//alfabeticamente
-names.sort();
-console.log("hola", names)
-//reversible alfabeticamente
-names.reverse();
-console.log("adios", names)
-
-
-
 
 /*BOTON BUSCAR POR NOMBRE*/
 let searchByName = document.getElementById("searchName");
@@ -90,8 +82,54 @@ searchByName.onclick = function(){
 let searchFilters = document.getElementById("search");
 searchFilters.onclick = function(){
 
-   let waterFinder = document.getElementById("water").checked;
+   let arrangeAZ = document.getElementById("az").checked;
+   let arrangeZA = document.getElementById("za").checked;
+
+   let bugFinder = document.getElementById("bug").checked;
+   let darkFinder = document.getElementById("dark").checked;
+   let dragonFinder = document.getElementById("dragon").checked;
+   let electricFinder = document.getElementById("electric").checked;
+   let fairyFinder = document.getElementById("fairy").checked;
+   let fightingFinder = document.getElementById("fighting").checked;
+   let fireFinder = document.getElementById("fire").checked;
+   let flyingFinder = document.getElementById("flying").checked;
    let ghostFinder = document.getElementById("ghost").checked;
+   let grassFinder = document.getElementById("grass").checked;
+   let groundFinder = document.getElementById("ground").checked;
+   let iceFinder = document.getElementById("ice").checked;
+   let normalFinder = document.getElementById("normal").checked;
+   let pisonFinder = document.getElementById("poison").checked;
+   let psychicFinder = document.getElementById("psychic").checked;
+   let rockFinder = document.getElementById("rock").checked;
+   let steelFinder = document.getElementById("steel").checked;
+   let waterFinder = document.getElementById("water").checked;
+
+
+
+   if (arrangeAZ == true){
+
+      let sortedPokemons = pokemons.sort(function(a,b){
+         if (a.name < b.name) return -1;
+         if (a.name > b.name) return 1;
+         return 0;
+      });
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (arrangeZA == true){
+      let sortedPokemons = pokemons.sort(function(a,b){
+         if (a.name < b.name) return 1;
+         if (a.name > b.name) return -1;
+         return 0;
+      });
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
 
    if (waterFinder == true){
 
