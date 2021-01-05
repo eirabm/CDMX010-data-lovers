@@ -4,7 +4,9 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
 const poks = data;
-const pokemons = poks.pokemon; 
+const pokemons = poks.pokemon;
+//Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
+var names = [];
 
 const colors = {
 	fire: '#FDDFDF',
@@ -34,6 +36,9 @@ let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
 let imagen = pokemons.map((pokeImg) => pokeImg.img);
 let number = pokemons.map((pokeNum) => pokeNum.num);*/
 
+document.getElementById("pokemonss").innerHTML = `
+${pokemons.map(pokeCard).join('')}
+`
 function pokeCard(pokemones){
    return `
    <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
@@ -47,9 +52,26 @@ function pokeCard(pokemones){
    </div>`
 }
 
-document.getElementById("pokemonss").innerHTML = `
-${pokemons.map(pokeCard).join('')}
-`
+
+
+//******************************************************************************* */
+//Definimos un "For" para iniciar con un ciclo.
+for (let i = 0; i < pokemons.length; i++){
+   //Obtenemos el nombre de cada objeto del arreglo
+   let name = pokemons[i].name;
+   //Empujamos los nombres obtenidos a la variable
+   names.push(name);  
+};
+
+//alfabeticamente
+names.sort();
+console.log("hola", names)
+//reversible alfabeticamente
+names.reverse();
+console.log("adios", names)
+
+
+
 
 /* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
 
@@ -83,4 +105,3 @@ for (let i = 0; i < pokemons.length; i++){
 
 arrayNombres.sort();
 console.log(arrayNombres);*/ 
-
