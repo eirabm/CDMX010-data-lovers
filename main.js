@@ -98,7 +98,7 @@ searchFilters.onclick = function(){
    let groundFinder = document.getElementById("ground").checked;
    let iceFinder = document.getElementById("ice").checked;
    let normalFinder = document.getElementById("normal").checked;
-   let pisonFinder = document.getElementById("poison").checked;
+   let poisonFinder = document.getElementById("poison").checked;
    let psychicFinder = document.getElementById("psychic").checked;
    let rockFinder = document.getElementById("rock").checked;
    let steelFinder = document.getElementById("steel").checked;
@@ -131,19 +131,148 @@ searchFilters.onclick = function(){
       ` 
    }
 
-   if (waterFinder == true){
+   if (bugFinder == true){
 
+      let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeBug.map(pokeCard).join('')}
+      `
+   } 
+   
+   if(darkFinder == true) {
+      let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDark.map(pokeCard).join('')}
+      `
+   }
+
+   if(dragonFinder == true) {
+      let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDragon.map(pokeCard).join('')}
+      `
+   }
+
+   if(electricFinder == true) {
+      let pokemonTypeElectric = pokemons.filter((pokeElectric) => pokeElectric.type[0] === 'electric')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeElectric.map(pokeCard).join('')}
+      `
+   }
+
+   if(fairyFinder == true) {
+      let pokemonTypeFairy = pokemons.filter((pokeFairy) => pokeFairy.type[0] === 'fairy')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFairy.map(pokeCard).join('')}
+      `
+   }
+
+   if(fightingFinder == true) {
+      let pokemonTypeFighting = pokemons.filter((pokeFighting) => pokeFighting.type[0] === 'fighting')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFighting.map(pokeCard).join('')}
+      `
+   }
+
+   if(fireFinder == true) {
+      let pokemonTypeFire = pokemons.filter((pokeFire) => pokeFire.type[0] === 'fire')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFire.map(pokeCard).join('')}
+      `
+   }
+
+   if(flyingFinder == true) {
+      let pokemonTypeFlying = pokemons.filter((pokeFlying) => pokeFlying.type[0] === 'flying')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFlying.map(pokeCard).join('')}
+      `
+   }
+
+   if(ghostFinder == true) {
+      let pokemonTypeGhost = pokemons.filter((pokeGhost) => pokeGhost.type[0] === 'ghost')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGhost.map(pokeCard).join('')}
+      `
+   }
+
+   if(grassFinder == true) {
+      let pokemonTypeGrass = pokemons.filter((pokeGrass) => pokeGrass.type[0] === 'grass')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGrass.map(pokeCard).join('')}
+      `
+   }
+
+   if(groundFinder == true) {
+      let pokemonTypeGround = pokemons.filter((pokeGround) => pokeGround.type[0] === 'ground')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGround.map(pokeCard).join('')}
+      `
+   }
+
+   if(iceFinder == true) {
+      let pokemonTypeIce = pokemons.filter((pokeIce) => pokeIce.type[0] === 'ice')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeIce.map(pokeCard).join('')}
+      `
+   }
+
+   if(normalFinder == true) {
+      let pokemonTypeNormal = pokemons.filter((pokeNormal) => pokeNormal.type[0] === 'normal')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGhost.map(pokeCard).join('')}
+      `
+   }
+
+   if(poisonFinder == true) {
+      let pokemonTypePoison = pokemons.filter((pokePoison) => pokePoison.type[0] === 'poison')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypePoison.map(pokeCard).join('')}
+      `
+   }
+
+   if(psychicFinder == true) {
+      let pokemonTypePsychic = pokemons.filter((pokePsychic) => pokePsychic.type[0] === 'psychic')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypePsychic.map(pokeCard).join('')}
+      `
+   }
+
+   if(rockFinder == true) {
+      let pokemonTypeRock = pokemons.filter((pokeRock) => pokeRock.type[0] === 'rock')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGhost.map(pokeCard).join('')}
+      `
+   }
+
+   if(steelFinder == true) {
+      let pokemonTypeSteel = pokemons.filter((pokeSteel) => pokeSteel.type[0] === 'steel')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeSteel.map(pokeCard).join('')}
+      `
+   }
+
+   if(waterFinder == true) {
       let pokemonTypeWater = pokemons.filter((pokeWater) => pokeWater.type[0] === 'water')
 
       document.getElementById("pokemonss").innerHTML = `
       ${pokemonTypeWater.map(pokeCard).join('')}
-      `
-
-   } else if(ghostFinder == true) {
-      var pokemonTypeGhost = pokemons.filter((pokeWater) => pokeWater.type[0] === 'ghost')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGhost.map(pokeCard).join('')}
       `
    }
 }
