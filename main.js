@@ -67,7 +67,7 @@ searchByName.onclick = function(){
 /*BOTON BUSCAR*/
 let searchFilters = document.getElementById("search");
 searchFilters.onclick = function(){
-   
+
    let waterFinder = document.getElementById("water").checked;
    let ghostFinder = document.getElementById("ghost").checked;
 
