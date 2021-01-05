@@ -27,21 +27,11 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-<<<<<<< HEAD
-function water(){
-   const waterType = document.getElementById("water");
-   
-   if(waterType.checked == true){
-      console.log("agua aqui");
-   } }
-=======
 /*ADQUIRIR VARIABLES POR MEDIO DE MAP
-
 let name = pokemons.map((pokeName) => pokeName.name);
 let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
 let imagen = pokemons.map((pokeImg) => pokeImg.img);
 let number = pokemons.map((pokeNum) => pokeNum.num);*/
->>>>>>> 8a98144b244bb53d43fb6c720c8dfe37f8e783d9
 
 function pokeCard(pokemones){
    return `
@@ -50,7 +40,7 @@ function pokeCard(pokemones){
    <img src="${pokemones.img}"/> </div>
    <div class="info">
    <span class= "number"> # ${pokemones.num} </span>
-   <h3 class = "name">${pokemones.name} </h3>
+   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
    <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
    </div>
    </div>`
@@ -60,18 +50,53 @@ document.getElementById("pokemonss").innerHTML = `
 ${pokemons.map(pokeCard).join('')}
 `
 
-/* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
+/*BOTON BUSCAR POR NOMBRE*/
+let searchByName = document.getElementById("searchName");
+searchByName.onclick = function(){
 
+    let nameToSearch = document.getElementById("nameToSearch").value.toLowerCase();
+
+    let foundName = pokemons.filter((filterName) => filterName.name == nameToSearch)
+
+    document.getElementById("pokemonss").innerHTML = `
+    ${foundName.map(pokeCard).join('')}
+    `
+   }
+
+
+/*BOTON BUSCAR*/
+let searchFilters = document.getElementById("search");
+searchFilters.onclick = function(){
+   
+   let waterFinder = document.getElementById("water").checked;
+   let ghostFinder = document.getElementById("ghost").checked;
+
+   if (waterFinder == true){
+
+      let pokemonTypeWater = pokemons.filter((pokeWater) => pokeWater.type[0] === 'water')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeWater.map(pokeCard).join('')}
+      `
+
+   } else if(ghostFinder == true) {
+      var pokemonTypeGhost = pokemons.filter((pokeWater) => pokeWater.type[0] === 'ghost')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeGhost.map(pokeCard).join('')}
+      `
+   }
+}
+
+/* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
 for (let i = 0; i < pokemons.length; i++){
     
     let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
     let pokeTypes = pokemons[i].type[0];
     let imagen = pokemons[i].img;
     let number = pokemons[i].num;
-
     let color = colors[pokeTypes];
     
-
     document.getElementById("pokemonss").innerHTML += `
     <div class= "pokemonCard" style="background-color:${color}"> 
     <div class="imgContainer">
@@ -86,22 +111,8 @@ for (let i = 0; i < pokemons.length; i++){
    /*nombres.push(name);
    imagenes.push(imagen);*/
 
-<<<<<<< HEAD
-function thisPokemon(){
-   console.log("un cambio");
-}
-
-
-
-
-
-/*arrayNombres.sort();
-=======
 
 
 /* ESTO LOS ORDENA ALFABETICAMENTE
-
 arrayNombres.sort();
->>>>>>> 8a98144b244bb53d43fb6c720c8dfe37f8e783d9
 console.log(arrayNombres);*/ 
-
