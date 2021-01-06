@@ -6,7 +6,6 @@ import data from './data/pokemon/pokemon.js';
 const poks = data;
 const pokemons = poks.pokemon;
 //Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
-var names = [];
 
 const colors = {
 	fire: '#FDDFDF',
@@ -39,9 +38,11 @@ let number = pokemons.map((pokeNum) => pokeNum.num);*/
 document.getElementById("pokemonss").innerHTML = `
 ${pokemons.map(pokeCard).join('')}
 `
-function pokeCard (pokemones){
+
+function pokeCard (pokemones, index){
+
    return `
-   <div class="pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
+   <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
    <div class="imgContainer">
    <img src="${pokemones.img}"/> </div>
    <div class="info">
@@ -52,16 +53,37 @@ function pokeCard (pokemones){
    </div>`
 }
 
+function pokeIndividualInfo (pokemones){
+   return `
+   <div class="individualPokeCard">
+   <div class="imgContainter">
+   <img src="${pokemones.img}"/> </div>
+   <div class="info" style="background-color:${colors[pokemones.type[0]]}">
+   <span class= "number"> # ${pokemones.num} </span>
+   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
+   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+   <p class = "about">${pokemones.about}</p>
+   <p>${pokemones.evolution}</p>
+   </div>
+   `
+}
 
+window.getPokemon = function showThisPokemon(){
+   
+   for (let i=0; i < document.getElementById("pokemonss").children.length ; i++){
+      document.getElementById("pokemonss").children[i].onclick = function(){
 
-//******************************************************************************* */
-//Definimos un "For" para iniciar con un ciclo.
-for (let i = 0; i < pokemons.length; i++){
-   //Obtenemos el nombre de cada objeto del arreglo
-   let name = pokemons[i].name;
-   //Empujamos los nombres obtenidos a la variable
-   names.push(name);  
-};
+         let pokemonIndex = i;
+
+         let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num == (i + 1))
+
+         document.getElementById("pokemonss").innerHTML = `
+         ${getThisPokemon.map(pokeIndividualInfo).join('')}
+         `
+        }
+      };
+   }
+
 
 
 /*BOTON BUSCAR POR NOMBRE*/
@@ -73,7 +95,7 @@ searchByName.onclick = function(){
     let foundName = pokemons.filter((filterName) => filterName.name == nameToSearch)
 
     document.getElementById("pokemonss").innerHTML = `
-    ${foundName.map(pokeCard).join('')}
+    ${foundName.map(pokeIndividualInfo).join('')}
     `
    }
 
@@ -92,7 +114,6 @@ searchFilters.onclick = function(){
    let fairyFinder = document.getElementById("fairy").checked;
    let fightingFinder = document.getElementById("fighting").checked;
    let fireFinder = document.getElementById("fire").checked;
-   let flyingFinder = document.getElementById("flying").checked;
    let ghostFinder = document.getElementById("ghost").checked;
    let grassFinder = document.getElementById("grass").checked;
    let groundFinder = document.getElementById("ground").checked;
@@ -104,7 +125,11 @@ searchFilters.onclick = function(){
    let steelFinder = document.getElementById("steel").checked;
    let waterFinder = document.getElementById("water").checked;
 
-
+   let candyTwelve = document.getElementById("twelveCandy").checked;
+   let candyTwentyFive = document.getElementById("twentyFiveCandy").checked;
+   let candyFifty = document.getElementById("fiftyCandy").checked;
+   let candyAHundred = document.getElementById("aHundredCandy").checked;
+   let candyFourHundred = document.getElementById("fourhundredCandy").checked;
 
    if (arrangeAZ == true){
 
@@ -188,14 +213,6 @@ searchFilters.onclick = function(){
       `
    }
 
-   if(flyingFinder == true) {
-      let pokemonTypeFlying = pokemons.filter((pokeFlying) => pokeFlying.type[0] === 'flying')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFlying.map(pokeCard).join('')}
-      `
-   }
-
    if(ghostFinder == true) {
       let pokemonTypeGhost = pokemons.filter((pokeGhost) => pokeGhost.type[0] === 'ghost')
 
@@ -232,7 +249,7 @@ searchFilters.onclick = function(){
       let pokemonTypeNormal = pokemons.filter((pokeNormal) => pokeNormal.type[0] === 'normal')
 
       document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGhost.map(pokeCard).join('')}
+      ${pokemonTypeNormal.map(pokeCard).join('')}
       `
    }
 
@@ -256,7 +273,7 @@ searchFilters.onclick = function(){
       let pokemonTypeRock = pokemons.filter((pokeRock) => pokeRock.type[0] === 'rock')
 
       document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGhost.map(pokeCard).join('')}
+      ${pokemonTypeRock.map(pokeCard).join('')}
       `
    }
 
@@ -273,6 +290,81 @@ searchFilters.onclick = function(){
 
       document.getElementById("pokemonss").innerHTML = `
       ${pokemonTypeWater.map(pokeCard).join('')}
+      `
+   }
+
+   if(candyTwelve == true) {
+
+      let pokemonCandyTwelve = pokemons.filter((pokemon) => {
+
+         if(pokemon.evolution['next-evolution'] !== undefined){
+
+         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '12'}
+
+      })
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyTwelve.map(pokeCard).join('')}
+      `
+   }
+
+   if(candyTwentyFive == true) {
+
+      let pokemonCandyTwentyFive = pokemons.filter((pokemon) => {
+
+         if(pokemon.evolution['next-evolution'] !== undefined){
+
+         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '25'}
+
+      })
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyTwentyFive.map(pokeCard).join('')}
+      `
+   }
+
+   if(candyFifty == true) {
+
+      let pokemonCandyFifty = pokemons.filter((pokemon) => {
+
+         if(pokemon.evolution['next-evolution'] !== undefined){
+
+         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '50'}
+
+      })
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyFifty.map(pokeCard).join('')}
+      `
+   }
+
+   if(candyAHundred == true) {
+
+      let pokemonCandyAHundred = pokemons.filter((pokemon) => {
+
+         if(pokemon.evolution['next-evolution'] !== undefined){
+
+         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '100'}
+
+      })
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyAHundred.map(pokeCard).join('')}
+      `
+   }
+
+   if(candyFourHundred == true) {
+
+      let pokemonCandyFourHundred = pokemons.filter((pokemon) => {
+
+         if(pokemon.evolution['next-evolution'] !== undefined){
+
+         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '400'}
+
+      })
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyFourHundred.map(pokeCard).join('')}
       `
    }
 }
