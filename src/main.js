@@ -54,7 +54,7 @@ function pokeCard(pokemones){
    <div class="imgContainer">
    <img src="${pokemones.img}"/> </div>
    <div class="info">
-   <span class= "number"> # ${pokemones.num} </span>
+   <span class= "number" id="number">${pokemones.num} </span>
    <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
    <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
    </div>
@@ -79,9 +79,6 @@ function pokeIndividualInfo (pokemones){
 window.getPokemon = function showThisPokemon(){
    
    for (let i=0; i < document.getElementById("pokemonss").children.length ; i++){
-      document.getElementById("pokemonss").children[i].onclick = function(){
-
-         let pokemonIndex = i;
 
          let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num == (i + 1))
 
@@ -119,10 +116,11 @@ searchByName.onclick = function(){
 let searchFilters = document.getElementById("search");
 //Definimos el evento del DOM "onclick" del botón.
 searchFilters.onclick = function(){
-   //Se definen las variables.
-   let arrangeAZ = document.getElementById("az").checked;
-   let arrangeZA = document.getElementById("za").checked;
 
+   let filteredPokemons= [];
+
+   for (let i=0; i < pokemons.length; i++){
+   //Se definen las variables.
    let arrangeAZ = document.getElementById("az").checked;
    let arrangeZA = document.getElementById("za").checked;
 
@@ -158,6 +156,18 @@ searchFilters.onclick = function(){
          if (a.name > b.name) return -1;
          return 0;
       });
+      document.getElementById("pokemonss").innerHTML = `
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (arrangeZA == true){
+      let sortedPokemons = pokemons.sort(function(a,b){
+         if (a.name < b.name) return 1;
+         if (a.name > b.name) return -1;
+         return 0;
+      });
+
       document.getElementById("pokemonss").innerHTML = `
       ${sortedPokemons.map(pokeCard).join('')}
       ` 
@@ -304,18 +314,6 @@ searchFilters.onclick = function(){
       ` 
    }
 
-   if (arrangeZA == true){
-      let sortedPokemons = pokemons.sort(function(a,b){
-         if (a.name < b.name) return 1;
-         if (a.name > b.name) return -1;
-         return 0;
-      });
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
-
    if (bugFinder == true){
 
       let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
@@ -362,25 +360,6 @@ searchFilters.onclick = function(){
 
       document.getElementById("pokemonss").innerHTML = `
       ${pokemonTypeFighting.map(pokeCard).join('')}
-      `
-   }
-
-   if(twelveCandyFinder == true) {      
-
-      let evolucion = pokemons.evolution
-      console.log(" AQUI", evolucion);
-
-      let pokemonCandyTwelve = pokemons.filter((pokemon) => {
-         console.log("1", pokemon) //acceder al pokemon
-         console.log("2", pokemon.evolution) //acceder a la evolucion
-         console.log("3", pokemon.evolution['next-evolution']) //acceder a la siguiente evolucion
-         console.log("4", pokemon.evolution['next-evolution'][0]) 
-         pokemon.evolution['next-evolution'][0]['candy-cost'] === "12"
-      })
-      console.log("hola", pokemonCandyTwelve)
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyTwelve.map(pokeCard).join('')}
       `
    }
 
@@ -457,6 +436,7 @@ searchFilters.onclick = function(){
       document.getElementById("pokemonss").innerHTML = `
       ${pokemonCandyFourHundred.map(pokeCard).join('')}
       `
+   }
    }
 }
 
