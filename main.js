@@ -152,10 +152,7 @@ searchFilters.onclick = function(){
    //Se definen las variables.
    let arrangeAZ = document.getElementById("az").checked;
    let arrangeZA = document.getElementById("za").checked;
-
-   let arrangeAZ = document.getElementById("az").checked;
-   let arrangeZA = document.getElementById("za").checked;
-
+   
    let bugFinder = document.getElementById("bug").checked;
    let darkFinder = document.getElementById("dark").checked;
    let dragonFinder = document.getElementById("dragon").checked;
@@ -415,16 +412,15 @@ searchFilters.onclick = function(){
    }
 
    if(twelveCandyFinder == true) {      
-
-      let evolucion = pokemons.evolution
-      console.log(" AQUI", evolucion);
-
+      
       let pokemonCandyTwelve = pokemons.filter((pokemon) => {
          console.log("1", pokemon) //acceder al pokemon
          console.log("2", pokemon.evolution) //acceder a la evolucion
          console.log("3", pokemon.evolution['next-evolution']) //acceder a la siguiente evolucion
          console.log("4", pokemon.evolution['next-evolution'][0]) 
-         pokemon.evolution['next-evolution'][0]['candy-cost'] === "12"
+         
+
+         pokemon.evolution['next-evolution'][0]['candy-cost'] === "12"         
       })
       console.log("hola", pokemonCandyTwelve)
 
