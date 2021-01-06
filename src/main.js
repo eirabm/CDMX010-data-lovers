@@ -1,12 +1,16 @@
-import { example } from './data.js';
-// import data from './data/lol/lol.js';
+import {example} from './data.js';
+
 import data from './data/pokemon/pokemon.js';
-// import data from './data/rickandmorty/rickandmorty.js';
 
+//Obtenemos todos los datos del arreglo en una variable.
 const poks = data;
+//Obtenemos solo la información de los pokemones del arreglo.
 const pokemons = poks.pokemon;
-//Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
 
+// const nextEvolution = poks.evolution;
+// console.log("HOLA", nextEvolution)
+
+//Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
 const colors = {
 	fire: '#FDDFDF',
 	grass: '#b4ecb4',
@@ -28,19 +32,23 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-
-/*ADQUIRIR VARIABLES POR MEDIO DE MAP
+/*ADQUIRIR VARIABLES POR MEDIO DE MAP********************
 let name = pokemons.map((pokeName) => pokeName.name);
 let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
 let imagen = pokemons.map((pokeImg) => pokeImg.img);
 let number = pokemons.map((pokeNum) => pokeNum.num);*/
 
+/*TARJETAS DE POKEMONES EN LA PANTALLA PRINCIPAL*/
+
+//Indicamos que en la sección "pokemonss" se va a pintar la información de los pokemons con el diseño de la pokeCard.
+//Nota 1. "map" sirve para ****************
+//Nota 2. "join('')" sirve para que existan espacios entre cada objeto.
 document.getElementById("pokemonss").innerHTML = `
 ${pokemons.map(pokeCard).join('')}
 `
-
-function pokeCard (pokemones, index){
-
+//Se define una función donde se diseña lo que contendrán las tarjetas pokemón y la información filtrada de cada pokemón que se requiere.
+//Nota. "toUpperCase" esta indicando que la letra sea en mayuscula y con "slice" lo cortamos para que las siguientes se sigan viendo en minusculas.
+function pokeCard(pokemones){
    return `
    <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
    <div class="imgContainer">
@@ -86,23 +94,34 @@ window.getPokemon = function showThisPokemon(){
 
 
 
+
+//********************************************************************************** */
+
 /*BOTON BUSCAR POR NOMBRE*/
+
+//Definimos una variable para traer el id del botón.
 let searchByName = document.getElementById("searchName");
+//Definimos el evento del DOM "onclick" del botón.
 searchByName.onclick = function(){
-
+    //Al darle click al botón se obtendrá la información que el usuario ingreso en el input de búsqueda y se escribirá en minuscula gracias a "toLowerCase" para que coincida con la información del array.
     let nameToSearch = document.getElementById("nameToSearch").value.toLowerCase();
-
+   //Filtramos los nombres de los pokemones para que coincida con el nombre que ingreso el usuario.
     let foundName = pokemons.filter((filterName) => filterName.name == nameToSearch)
-
+   //Pintamos la información en el espacio seleccionado y le damos el formato de las "pokeCard"
     document.getElementById("pokemonss").innerHTML = `
     ${foundName.map(pokeIndividualInfo).join('')}
     `
    }
 
-
 /*BOTON BUSCAR*/
+
+//Definimos una variable para obtener el id del botón.
 let searchFilters = document.getElementById("search");
+//Definimos el evento del DOM "onclick" del botón.
 searchFilters.onclick = function(){
+   //Se definen las variables.
+   let arrangeAZ = document.getElementById("az").checked;
+   let arrangeZA = document.getElementById("za").checked;
 
    let arrangeAZ = document.getElementById("az").checked;
    let arrangeZA = document.getElementById("za").checked;
@@ -134,30 +153,22 @@ searchFilters.onclick = function(){
    if (arrangeAZ == true){
 
       let sortedPokemons = pokemons.sort(function(a,b){
-         if (a.name < b.name) return -1;
-         if (a.name > b.name) return 1;
-         return 0;
-      });
 
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
-
-   if (arrangeZA == true){
-      let sortedPokemons = pokemons.sort(function(a,b){
          if (a.name < b.name) return 1;
          if (a.name > b.name) return -1;
          return 0;
       });
-
       document.getElementById("pokemonss").innerHTML = `
       ${sortedPokemons.map(pokeCard).join('')}
       ` 
    }
 
-   if (bugFinder == true){
+   /*ORDENAR ELEMENTOS SEGÚN SU TIPO*/
 
+   //Si el "input" fue seleccionado entonces ejecutará lo siguiente
+   if (bugFinder == true){
+      //Se filtra la información del arreglo usando "filter", el cual recibe una función.
+      //Nota 1. "pokeBug" es un parámetro que nosotros definimos, donde se guardarán los pokemones de tipo "bug" y comenzará desde el primero que encuentre "0"
       let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
 
       document.getElementById("pokemonss").innerHTML = `
@@ -289,7 +300,87 @@ searchFilters.onclick = function(){
       let pokemonTypeWater = pokemons.filter((pokeWater) => pokeWater.type[0] === 'water')
 
       document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeWater.map(pokeCard).join('')}
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (arrangeZA == true){
+      let sortedPokemons = pokemons.sort(function(a,b){
+         if (a.name < b.name) return 1;
+         if (a.name > b.name) return -1;
+         return 0;
+      });
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (bugFinder == true){
+
+      let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeBug.map(pokeCard).join('')}
+      `
+   } 
+   
+   if(darkFinder == true) {
+      let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDark.map(pokeCard).join('')}
+      `
+   }
+
+   if(dragonFinder == true) {
+      let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDragon.map(pokeCard).join('')}
+      `
+   }
+
+   if(electricFinder == true) {
+      let pokemonTypeElectric = pokemons.filter((pokeElectric) => pokeElectric.type[0] === 'electric')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeElectric.map(pokeCard).join('')}
+      `
+   }
+
+   if(fairyFinder == true) {
+      let pokemonTypeFairy = pokemons.filter((pokeFairy) => pokeFairy.type[0] === 'fairy')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFairy.map(pokeCard).join('')}
+      `
+   }
+
+   if(fightingFinder == true) {
+      let pokemonTypeFighting = pokemons.filter((pokeFighting) => pokeFighting.type[0] === 'fighting')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFighting.map(pokeCard).join('')}
+      `
+   }
+
+   if(twelveCandyFinder == true) {      
+
+      let evolucion = pokemons.evolution
+      console.log(" AQUI", evolucion);
+
+      let pokemonCandyTwelve = pokemons.filter((pokemon) => {
+         console.log("1", pokemon) //acceder al pokemon
+         console.log("2", pokemon.evolution) //acceder a la evolucion
+         console.log("3", pokemon.evolution['next-evolution']) //acceder a la siguiente evolucion
+         console.log("4", pokemon.evolution['next-evolution'][0]) 
+         pokemon.evolution['next-evolution'][0]['candy-cost'] === "12"
+      })
+      console.log("hola", pokemonCandyTwelve)
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonCandyTwelve.map(pokeCard).join('')}
       `
    }
 
@@ -368,6 +459,7 @@ searchFilters.onclick = function(){
       `
    }
 }
+
 
 /* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
 for (let i = 0; i < pokemons.length; i++){
