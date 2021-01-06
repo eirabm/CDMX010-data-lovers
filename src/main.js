@@ -153,13 +153,17 @@ searchFilters.onclick = function(){
    let arrangeAZ = document.getElementById("az").checked;
    let arrangeZA = document.getElementById("za").checked;
 
+   let arrangeAZ = document.getElementById("az").checked;
+   let arrangeZA = document.getElementById("za").checked;
+
    let bugFinder = document.getElementById("bug").checked;
    let darkFinder = document.getElementById("dark").checked;
    let dragonFinder = document.getElementById("dragon").checked;
    let electricFinder = document.getElementById("electric").checked;
    let fairyFinder = document.getElementById("fairy").checked;
    let fightingFinder = document.getElementById("fighting").checked;
-   let fireFinder = document.getElementById("fire").checked; 
+   let fireFinder = document.getElementById("fire").checked;
+   let flyingFinder = document.getElementById("flying").checked;
    let ghostFinder = document.getElementById("ghost").checked;
    let grassFinder = document.getElementById("grass").checked;
    let groundFinder = document.getElementById("ground").checked;
@@ -175,22 +179,22 @@ searchFilters.onclick = function(){
 
    /*ORDENAR ELEMENTOS DE LA A-Z*/
 
-   //Si el "input" fue seleccionado entonces ejecutará lo siguiente
-   if (arrangeAZ == true){
-      //Se define una variable, donde se acomodarán alfabeticamente con "sort", sort recibe una función con 2 parámetros "a,b"
-      let sortedPokemons = pokemons.sort(function(a,b){
-         //Si el nombre ("name", se debe definir la informacion que se requiere)de a es menor al nombre de b, entonces será -1 (Comienzará en "A")
-         if (a.name < b.name) return -1;
-         //Si el nombre ("name", se debe definir la informacion que se requiere)de a es mayor al nombre de b, entonces será 1 (Comienzará en "Z")
-         if (a.name > b.name) return 1;
-         //Si ambos nombres son iguales, retornará 0.
-         return 0;
-      });
-      //Se indica donde se momstrará la información pintada.
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
+   // //Si el "input" fue seleccionado entonces ejecutará lo siguiente
+   // if (arrangeAZ == true){
+   //    //Se define una variable, donde se acomodarán alfabeticamente con "sort", sort recibe una función con 2 parámetros "a,b"
+   //    let sortedPokemons = pokemons.sort(function(a,b){
+   //       //Si el nombre ("name", se debe definir la informacion que se requiere)de a es menor al nombre de b, entonces será -1 (Comienzará en "A")
+   //       if (a.name < b.name) return -1;
+   //       //Si el nombre ("name", se debe definir la informacion que se requiere)de a es mayor al nombre de b, entonces será 1 (Comienzará en "Z")
+   //       if (a.name > b.name) return 1;
+   //       //Si ambos nombres son iguales, retornará 0.
+   //       return 0;
+   //    });
+   //    //Se indica donde se momstrará la información pintada.
+   //    document.getElementById("pokemonss").innerHTML = `
+   //    ${sortedPokemons.map(pokeCard).join('')}
+   //    ` 
+   // }
 
    /*ORDENAR ELEMENTOS DE LA Z-A*/
 
@@ -345,7 +349,68 @@ searchFilters.onclick = function(){
       let pokemonTypeWater = pokemons.filter((pokeWater) => pokeWater.type[0] === 'water')
 
       document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeWater.map(pokeCard).join('')}
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (arrangeZA == true){
+      let sortedPokemons = pokemons.sort(function(a,b){
+         if (a.name < b.name) return 1;
+         if (a.name > b.name) return -1;
+         return 0;
+      });
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${sortedPokemons.map(pokeCard).join('')}
+      ` 
+   }
+
+   if (bugFinder == true){
+
+      let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeBug.map(pokeCard).join('')}
+      `
+   } 
+   
+   if(darkFinder == true) {
+      let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDark.map(pokeCard).join('')}
+      `
+   }
+
+   if(dragonFinder == true) {
+      let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeDragon.map(pokeCard).join('')}
+      `
+   }
+
+   if(electricFinder == true) {
+      let pokemonTypeElectric = pokemons.filter((pokeElectric) => pokeElectric.type[0] === 'electric')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeElectric.map(pokeCard).join('')}
+      `
+   }
+
+   if(fairyFinder == true) {
+      let pokemonTypeFairy = pokemons.filter((pokeFairy) => pokeFairy.type[0] === 'fairy')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFairy.map(pokeCard).join('')}
+      `
+   }
+
+   if(fightingFinder == true) {
+      let pokemonTypeFighting = pokemons.filter((pokeFighting) => pokeFighting.type[0] === 'fighting')
+
+      document.getElementById("pokemonss").innerHTML = `
+      ${pokemonTypeFighting.map(pokeCard).join('')}
       `
    }
 
