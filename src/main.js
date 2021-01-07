@@ -1,7 +1,10 @@
-import {example} from './data.js';
+import {example,getpokemoncito} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
+let filtrito=["Agua","Fuego","Tierra","Aire","Psiquico","Fantasma"]
+
+console.warn(getpokemoncito(filtrito,filtrito))
 //Obtenemos todos los datos del arreglo en una variable.
 const poks = data;
 //Obtenemos solo la información de los pokemones del arreglo.
@@ -53,6 +56,19 @@ function pokeCard(pokemones){
    <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
    <div class="imgContainer">
    <img src="${pokemones.img}"/> </div>
+   <div class="info">
+   <span class= "number" id="number">${pokemones.num} </span>
+   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
+   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+   </div>
+   </div>`
+}
+
+function pokeCardFilt(pokemones){
+   return `
+   <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones[0].type[0]]}; cursor: pointer" onclick= "getPokemon()">
+   <div class="imgContainer">
+   <img src="${pokemones[0].img}"/> </div>
    <div class="info">
    <span class= "number" id="number">${pokemones.num} </span>
    <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
@@ -116,9 +132,8 @@ let searchFilters = document.getElementById("search");
 //Definimos el evento del DOM "onclick" del botón.
 searchFilters.onclick = function(){
 
-   let filteredPokemons= [];
+   let filteredPokemons = [];
 
-   for (let i=0; i < pokemons.length; i++){
    //Se definen las variables.
    let arrangeAZ = document.getElementById("az").checked;
    let arrangeZA = document.getElementById("za").checked;
@@ -180,18 +195,48 @@ searchFilters.onclick = function(){
       //Nota 1. "pokeBug" es un parámetro que nosotros definimos, donde se guardarán los pokemones de tipo "bug" y comenzará desde el primero que encuentre "0"
       let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
 
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeBug.map(pokeCard).join('')}
-      `
+      console.log(pokemonTypeBug);
+      filteredPokemons.push(pokemonTypeBug);
+
    } 
+
+   /*document.getElementById("pokemonss").innerHTML = `
+   ${filteredPokemons.map(pokeCardFilt).join('')}
+   `*/
+
    
    if(darkFinder == true) {
       let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
+      filteredPokemons.push(pokemonTypeDark);
 
       document.getElementById("pokemonss").innerHTML = `
       ${pokemonTypeDark.map(pokeCard).join('')}
       `
    }
+
+   let howManyFilters = filteredPokemons.length;
+
+  console.log(howManyFilters);
+
+  for (let i = 0; i < pokemons.length; i++){
+   let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
+   let pokeTypes = pokemons[i].type[0];
+   let imagen = pokemons[i].img;
+   let number = pokemons[i].num;
+   let color = colors[pokeTypes];
+   document.getElementById("pokemonss").innerHTML += `
+   <div class= "pokemonCard" style="background-color:${color}"> 
+   <div class="imgContainer">
+   <img src="${imagen}"/> </div>
+   <div class="info">
+   <span class= "number"> # ${number} </span>
+   <h3 class = "name">${name} </h3>
+   <small class="type"> Tipo: <span>${pokeTypes} </span></small>
+   </div>
+   </div>
+   `
+}
+
 
    if(dragonFinder == true) {
       let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
@@ -388,7 +433,7 @@ searchFilters.onclick = function(){
       ${pokemonCandyFourHundred.map(pokeCard).join('')}
       `
    }
-   }
+   
 }
 
 
