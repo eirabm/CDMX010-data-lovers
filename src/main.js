@@ -86,8 +86,7 @@ window.getPokemon = function showThisPokemon(){
          ${getThisPokemon.map(pokeIndividualInfo).join('')}
          `
         }
-      };
-   }
+      }
 
 
 
@@ -314,54 +313,6 @@ searchFilters.onclick = function(){
       ` 
    }
 
-   if (bugFinder == true){
-
-      let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeBug.map(pokeCard).join('')}
-      `
-   } 
-   
-   if(darkFinder == true) {
-      let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeDark.map(pokeCard).join('')}
-      `
-   }
-
-   if(dragonFinder == true) {
-      let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeDragon.map(pokeCard).join('')}
-      `
-   }
-
-   if(electricFinder == true) {
-      let pokemonTypeElectric = pokemons.filter((pokeElectric) => pokeElectric.type[0] === 'electric')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeElectric.map(pokeCard).join('')}
-      `
-   }
-
-   if(fairyFinder == true) {
-      let pokemonTypeFairy = pokemons.filter((pokeFairy) => pokeFairy.type[0] === 'fairy')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFairy.map(pokeCard).join('')}
-      `
-   }
-
-   if(fightingFinder == true) {
-      let pokemonTypeFighting = pokemons.filter((pokeFighting) => pokeFighting.type[0] === 'fighting')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFighting.map(pokeCard).join('')}
-      `
-   }
 
    if(candyTwelve == true) {
 
