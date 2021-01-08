@@ -8,25 +8,21 @@ export const anotherExample = () => {
   return 'OMG';
 };
 
-// let buttonSearchAlphabet = document.getElementById("search");
 
-// buttonSearchAlphabet.onclick = function(){
-//   let alphabet = names.sort();
-//   document.getElementById("pokemonss").innerHTML = alphabet;
-// };
-let algoalpokemon=(pokemon)=>{
-  let estudiante=`Eira y ale ya usen los pokemones ${pokemon}`
-  return estudiante
-}
 
-export let  getpokemoncito=(filterby,orderby)=>{
+export let getpokemoncito=(filterby, pokemons, pokeCard)=>{
   if(filterby){
-    filterby.map(pokemon=>{
-      console.error(algoalpokemon(pokemon))
-    })
-//los poquemones filtrados
+  
+   let filters = filterby.map((filtro)=> pokemons.filter((pokemon) => pokemon.type[0] === filtro))
 
-return filterby.length
+   let manyfilters = filters.length
+
+   let mappedPokemons = filters.map((poke) => poke.map(pokeCard))
+
+   return mappedPokemons
+
+
+//los poquemones filtrados
   }else{
 //los poquemones sin filtro
 return "ale"
