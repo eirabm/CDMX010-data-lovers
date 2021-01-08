@@ -7,11 +7,9 @@
     margin: 0%;
     padding: 0%;
 }
-
 .menu{
     border-color: black 2px;
 }
-
 .navbar{    
     display: inline-block;
     padding-top: 28px;
@@ -21,47 +19,38 @@
     font-weight: bold;  
     align-items: space-between;
 }
-
 .name{
     width: 100%;
     max-width: 200px; 
     margin-top: 12px;
     padding-left: 10px;
 }
-
 .user{
     width: 100%;
     max-width: 30px; 
 }
-
 .car{
     width: 100%;
     max-width: 30px; 
 }
-
 .endNavbar{
     background-color: #c4c4c4;
     width: 100%;
 }
-
 .findPokemon{
     font-family: 'Heebo', sans-serif;
 }
-
 .flexbox{
     display: flex;
     flex-direction: column;
 }
-
 .favoritePokemon{
     margin-left: 33px;
     font-weight: bold;    
 }
-
 .favoritePokemon{
     font-size: 15px;
 }
-
 .pokemonName{
     margin-top: 8px;
     margin-left: 33px;
@@ -71,8 +60,6 @@
     border:1px #B4B2B2 solid;
     outline: none;  
 }
-
-
 .searchName{
     margin-left: 33px;
     border-radius: 6px;
@@ -85,24 +72,20 @@
     border: 2px #0E918C solid;
     color: white
 }
-
 .searchName:hover{
     cursor: pointer;
 }
-
 .search{   
     display: flex;
     flex-direction: row; 
     width: 270px;
     position: absolute;
 }
-
 .line{
     margin-left: 18px;
     margin-top: 27px;
     background-color: #c4c4c4;
 }
-
 .filter ul{
     font-family: 'Heebo', sans-serif;
     list-style: none;
@@ -110,7 +93,6 @@
     width: 270px;
     position: absolute;
 }
-
 .searchFilter{    
     border-radius: 6px;
     padding: 3px;
@@ -122,71 +104,61 @@
     border: 2px #0E918C solid;
     color: white
 }
-
 .filter{
     display: flex;
     flex-direction: row;
-
 }
-
 .searchFilter:hover{
     cursor: pointer;
 }
-
 .alphabet{
     display: flex;    
 }
-
 .az{
     margin: 0%;  
     font-size: 14px;
     margin-left: 6px;  
 }
-
 .filtros{
     font-size: 18px;
     font-weight: bold;
 }
-
 .nombre{
     font-size: 14px;
     font-weight: bold;
 }
-
 .tipo{
     font-size: 14px;
     font-weight: bold;
 }
-
 .caramelos{
     font-size: 14px;
     font-weight: bold;
 }
-
 .pokemonList{
     display: flex;    
     flex-direction: column;
     margin-left: 56px;
 }
-
-
 .pokemons{    
     font-family: 'Heebo', sans-serif;
     font-weight: bolder;
     padding-left: 150px;
+    text-align: center;
+    padding-right: 112px;
+    padding-top: 7px;  
+    padding-bottom: 13px;
+    font-size: 20px;
 }
-
 /*Esta parte da formato a las fichas del pokemon */
-
 .pokemonss{
     display: flex;
     flex-wrap: wrap;
     align-items: space-between;
     justify-content: center;
-    margin: 0 auto;
+    margin-left: 50px;
     max-width: 1200px;
 }
-
 .pokemonCard {
 	background-color: #eee;
 	border-radius: 20px;
@@ -195,8 +167,6 @@
 	padding: 20px;
 	text-align: center;
 }
-
-
 .pokemonCard .imgContainer {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
@@ -204,24 +174,111 @@
 	height: 120px;
 	text-align: center;
 }
-
 .pokemonCard .imgContainer img {
 	margin-top: 20px;
 	max-width: 90%;
 }
-
 .pokemonCard .info {
 	margin-top: 10px;
 }
-
 .pokemonCard .number {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 	font-size: 0.8em;
 	padding: 5px 10px;
 }
-
 .pokemonCard .name {
 	margin: 15px 0 7px;
 	letter-spacing: 1px;
 }
+/*Esta parte es el formato de la info de un pokemon*/
+.individualPokeCard{
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.individualPokeCard .imgContainer {
+    background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 50%;
+	width: 500px;
+	height: 500px;
+	text-align: center;
+}
+.individualPokeCard .imgContainer img {
+	margin-top: 200px;
+	max-width: 90%;
+}
+.individualPokeCard .info {
+    background-color: #eee;
+	border-radius: 20px;
+	box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+}
+/* ESTILOS DE LA TARJETA INFORMATIVA DE LOS POKEMONS */
+.individualPokeCard{
+    display: flex;
+    flex-direction: column;
+}
+.imgContainter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("imagenes/background-hero.png");    
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+.pokemon{
+    width: 18%;    
+}
+.cardText{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;   
+}
+.information{
+    margin-left: 189px;
+    font-size: 15px;
+}
+.typeCard{
+    color: #838383;
+    padding-top: 0%;
+    margin-top: 0%;
+}
+.stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;    
+}
+.linee{
+    border: 1px solid white;    
+}
+.extra{
+    margin-left: 177px;
+    margin-right: 175px;
+}
+.about{
+    margin-left: 189px;
+    margin-right: 189px;
+    text-align: justify;
+    font-size: 15px;
+}
+.pokename{
+    font-size: 26px;
+    margin-bottom: unset;
+    margin-left: 177px;
+    margin-right: 177px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+
+
+
+
+
