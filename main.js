@@ -1,17 +1,12 @@
-import {example,getpokemoncito} from './data.js';
+import {example, getpokemoncito} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
-let filtrito=["Agua","Fuego","Tierra","Aire","Psiquico","Fantasma"]
+let typesToFilter=[];
 
-console.warn(getpokemoncito(filtrito,filtrito))
-//Obtenemos todos los datos del arreglo en una variable.
 const poks = data;
-//Obtenemos solo la información de los pokemones del arreglo.
-const pokemons = poks.pokemon;
 
-// const nextEvolution = poks.evolution;
-// console.log("HOLA", nextEvolution)
+const pokemons = poks.pokemon;
 
 //Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
 const colors = {
@@ -52,62 +47,62 @@ ${pokemons.map(pokeCard).join('')}
 //Se define una función donde se diseña lo que contendrán las tarjetas pokemón y la información filtrada de cada pokemón que se requiere.
 //Nota. "toUpperCase" esta indicando que la letra sea en mayuscula y con "slice" lo cortamos para que las siguientes se sigan viendo en minusculas.
 function pokeCard(pokemones){
-   return `
-   <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
-   <div class="imgContainer">
-   <img src="${pokemones.img}"/> </div>
-   <div class="info">
-   <span class= "number" id="number">${pokemones.num} </span>
-   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
-   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
-   </div>
-   </div>`
-}
-
-function pokeCardFilt(pokemones){
-   return `
-   <div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones[0].type[0]]}; cursor: pointer" onclick= "getPokemon()">
-   <div class="imgContainer">
-   <img src="${pokemones[0].img}"/> </div>
-   <div class="info">
-   <span class= "number" id="number">${pokemones.num} </span>
-   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
-   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
-   </div>
-   </div>`
+	return `
+	<div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
+	<div class="imgContainer">
+	<img src="${pokemones.img}"/> </div>
+	<div class="info">
+	<span class= "number" id="number">${pokemones.num} </span>
+	<h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
+	<small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+	</div>
+	</div>`
 }
 
 function pokeIndividualInfo (pokemones){
-   return `
-   <div class="individualPokeCard">
-   <div class="imgContainter">
-   <img src="${pokemones.img}"/> </div>
-   <div class="info" style="background-color:${colors[pokemones.type[0]]}">
-   <span class= "number"> # ${pokemones.num} </span>
-   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
-   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
-   <p class = "about">${pokemones.about}</p>
-   <p>${pokemones.evolution}</p>
-   </div>
-   `
-}
+	return `
+	<div class="individualPokeCard">
+	<div class="imgContainter">
+	<img class="pokemon" src="${pokemones.img}"/>
+	</div> 
+	<div class="cardText"> 
+	   <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
+	   <p class="information"> Tipo: ${pokemones.type[0]} <br>
+	   Lugar de aparición: ${pokemones.generation['name']} <br>
+	   Siguiente evolución: ${pokemones.evolution['next-evolution'][0]['name']}</p>     
+	   <p class = "about">${pokemones.about}</p>
+	</div>
+	<div class="extra">
+	<div class="info" style="background-color:${colors[pokemones.type[0]]}">
+	 <div class="stats">         
+	  <h5 class = "height"> Altura: <br> ${pokemones.size['height']} </h5> 
+	  <span class="linee"></span>      
+	  <h5 class = "weight"> Peso: <br> ${pokemones.size['weight']} </h5>     
+	  <span class="linee"></span> 
+	  <h5 class = "attack"> Estadísticas <br> de ataque: <br> ${pokemones.stats['base-attack']} </h5>  
+	  <span class="linee"></span>       
+	  <h5 class = "defense"> Estadísticas <br> de defensa: <br> ${pokemones.stats['base-defense']} </h5>  
+	  <span class="linee></span>     
+	</div>   
+	</div>   
+	`
+ };
 
-window.getPokemon = function showThisPokemon(){
-   
-   for (let i=0; i < document.getElementById("pokemonss").children.length ; i++){
+ window.getPokemon = function showThisPokemon(){
+	for (let i=0; i < document.getElementById("pokemonss").children.length ; i++){
 
-         let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num == (i + 1))
+	   document.getElementById("pokemonss").children[i].onclick = function(){
 
-         document.getElementById("pokemonss").innerHTML = `
-         ${getThisPokemon.map(pokeIndividualInfo).join('')}
-         `
-        }
-      }
+		  let pokemonIndex = i;
+		  let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num == (i + 1))
 
+		  document.getElementById("pokemonss").innerHTML = `
+		  ${getThisPokemon.map(pokeIndividualInfo).join('')}
+		  `
+		 }
+	   }
+	}
 
-
-
-//********************************************************************************** */
 
 /*BOTON BUSCAR POR NOMBRE*/
 
@@ -125,36 +120,29 @@ searchByName.onclick = function(){
     `
    }
 
-/*BOTON BUSCAR*/
+let setFilters = document.getElementById("search");
+setFilters.onclick = function(){
 
-//Definimos una variable para obtener el id del botón.
-let searchFilters = document.getElementById("search");
-//Definimos el evento del DOM "onclick" del botón.
-searchFilters.onclick = function(){
+	let arrangeAZ = document.getElementById("az").checked;
+    let arrangeZA = document.getElementById("za").checked;
 
-   let filteredPokemons = [];
-
-   //Se definen las variables.
-   let arrangeAZ = document.getElementById("az").checked;
-   let arrangeZA = document.getElementById("za").checked;
-
-   let bugFinder = document.getElementById("bug").checked;
-   let darkFinder = document.getElementById("dark").checked;
-   let dragonFinder = document.getElementById("dragon").checked;
-   let electricFinder = document.getElementById("electric").checked;
-   let fairyFinder = document.getElementById("fairy").checked;
-   let fightingFinder = document.getElementById("fighting").checked;
-   let fireFinder = document.getElementById("fire").checked;
-   let ghostFinder = document.getElementById("ghost").checked;
-   let grassFinder = document.getElementById("grass").checked;
-   let groundFinder = document.getElementById("ground").checked;
-   let iceFinder = document.getElementById("ice").checked;
-   let normalFinder = document.getElementById("normal").checked;
-   let poisonFinder = document.getElementById("poison").checked;
-   let psychicFinder = document.getElementById("psychic").checked;
-   let rockFinder = document.getElementById("rock").checked;
-   let steelFinder = document.getElementById("steel").checked;
-   let waterFinder = document.getElementById("water").checked;
+	document.getElementById("bug").checked ? typesToFilter.push('bug') : '';
+	document.getElementById("dark").checked ? typesToFilter.push('dark') : '';
+	document.getElementById("dragon").checked ? typesToFilter.push('dragon') : '';
+	document.getElementById("electric").checked ? typesToFilter.push('electric') : '';
+	document.getElementById("fairy").checked ? typesToFilter.push('fairy') : '';
+	document.getElementById("fighting").checked ? typesToFilter.push('fighting') : '';
+	document.getElementById("fire").checked ? typesToFilter.push('fire') : '';
+	document.getElementById("ghost").checked ? typesToFilter.push('ghost') : '';
+	document.getElementById("grass").checked ? typesToFilter.push('grass') : '';	
+	document.getElementById("ground").checked ? typesToFilter.push('ground') : '';
+	document.getElementById("ice").checked ? typesToFilter.push('ice') : '';
+	document.getElementById("normal").checked ? typesToFilter.push('normal') : '';
+	document.getElementById("poison").checked ? typesToFilter.push('poison') : '';
+	document.getElementById("psychic").checked ? typesToFilter.push('psychic') : '';
+	document.getElementById("rock").checked ? typesToFilter.push('rock') : '';
+	document.getElementById("steel").checked ? typesToFilter.push('steel') : '';
+	document.getElementById("water").checked ? typesToFilter.push('water') : '';
 
    let candyTwelve = document.getElementById("twelveCandy").checked;
    let candyTwentyFive = document.getElementById("twentyFiveCandy").checked;
@@ -162,306 +150,110 @@ searchFilters.onclick = function(){
    let candyAHundred = document.getElementById("aHundredCandy").checked;
    let candyFourHundred = document.getElementById("fourhundredCandy").checked;
 
-   if (arrangeAZ == true){
+	if (arrangeAZ == true){
 
-      let sortedPokemons = pokemons.sort(function(a,b){
+		let sortedPokemons = pokemons.sort(function(a,b){
+  
+		   if (a.name < b.name) return -1;
+		   if (a.name > b.name) return 1;
+		   return 0;
+		});
+		document.getElementById("pokemonss").innerHTML = `
+		${sortedPokemons.map(pokeCard).join('')}
+		` 
+	 }
+  
+	 if (arrangeZA == true){
+		let sortedPokemons = pokemons.sort(function(a,b){
+		   if (a.name < b.name) return 1;
+		   if (a.name > b.name) return -1;
+		   return 0;
+		});
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${sortedPokemons.map(pokeCard).join('')}
+		` 
+	 }
 
-         if (a.name < b.name) return 1;
-         if (a.name > b.name) return -1;
-         return 0;
-      });
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
+	
+	let uniqueFilters = [...new Set(typesToFilter)];
+	document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueFilters, pokemons, pokeCard)
 
-   if (arrangeZA == true){
-      let sortedPokemons = pokemons.sort(function(a,b){
-         if (a.name < b.name) return 1;
-         if (a.name > b.name) return -1;
-         return 0;
-      });
+	if(candyTwelve == true) {
 
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
+		let pokemonCandyTwelve = pokemons.filter((pokemon) => {
+  
+		   if(pokemon.evolution['next-evolution'] !== undefined){
+  
+		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '12'}
+  
+		})
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${pokemonCandyTwelve.map(pokeCard).join('')}
+		`
+	 }
+  
+	 if(candyTwentyFive == true) {
+  
+		let pokemonCandyTwentyFive = pokemons.filter((pokemon) => {
+  
+		   if(pokemon.evolution['next-evolution'] !== undefined){
+  
+		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '25'}
+  
+		})
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${pokemonCandyTwentyFive.map(pokeCard).join('')}
+		`
+	 }
 
-   /*ORDENAR ELEMENTOS SEGÚN SU TIPO*/
+	 if(candyFifty == true) {
 
-   //Si el "input" fue seleccionado entonces ejecutará lo siguiente
-   if (bugFinder == true){
-      //Se filtra la información del arreglo usando "filter", el cual recibe una función.
-      //Nota 1. "pokeBug" es un parámetro que nosotros definimos, donde se guardarán los pokemones de tipo "bug" y comenzará desde el primero que encuentre "0"
-      let pokemonTypeBug = pokemons.filter((pokeBug) => pokeBug.type[0] === 'bug')
+		let pokemonCandyFifty = pokemons.filter((pokemon) => {
+  
+		   if(pokemon.evolution['next-evolution'] !== undefined){
+  
+		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '50'}
+  
+		})
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${pokemonCandyFifty.map(pokeCard).join('')}
+		`
+	 }
+  
+	 if(candyAHundred == true) {
+  
+		let pokemonCandyAHundred = pokemons.filter((pokemon) => {
+  
+		   if(pokemon.evolution['next-evolution'] !== undefined){
+  
+		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '100'}
+  
+		})
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${pokemonCandyAHundred.map(pokeCard).join('')}
+		`
+	 }
 
-      console.log(pokemonTypeBug);
-      filteredPokemons.push(pokemonTypeBug);
+	 if(candyFourHundred == true) {
 
-   } 
+		let pokemonCandyFourHundred = pokemons.filter((pokemon) => {
+  
+		   if(pokemon.evolution['next-evolution'] !== undefined){
+  
+		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '400'}
+  
+		})
+  
+		document.getElementById("pokemonss").innerHTML = `
+		${pokemonCandyFourHundred.map(pokeCard).join('')}
+		`
+	 }
 
-   /*document.getElementById("pokemonss").innerHTML = `
-   ${filteredPokemons.map(pokeCardFilt).join('')}
-   `*/
-
-   
-   if(darkFinder == true) {
-      let pokemonTypeDark = pokemons.filter((pokeDark) => pokeDark.type[0] === 'dark')
-      filteredPokemons.push(pokemonTypeDark);
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeDark.map(pokeCard).join('')}
-      `
-   }
-
-   let howManyFilters = filteredPokemons.length;
-
-  console.log(howManyFilters);
-
-  for (let i = 0; i < pokemons.length; i++){
-   let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
-   let pokeTypes = pokemons[i].type[0];
-   let imagen = pokemons[i].img;
-   let number = pokemons[i].num;
-   let color = colors[pokeTypes];
-   document.getElementById("pokemonss").innerHTML += `
-   <div class= "pokemonCard" style="background-color:${color}"> 
-   <div class="imgContainer">
-   <img src="${imagen}"/> </div>
-   <div class="info">
-   <span class= "number"> # ${number} </span>
-   <h3 class = "name">${name} </h3>
-   <small class="type"> Tipo: <span>${pokeTypes} </span></small>
-   </div>
-   </div>
-   `
 }
 
 
-   if(dragonFinder == true) {
-      let pokemonTypeDragon = pokemons.filter((pokeDragon) => pokeDragon.type[0] === 'dragon')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeDragon.map(pokeCard).join('')}
-      `
-   }
-
-   if(electricFinder == true) {
-      let pokemonTypeElectric = pokemons.filter((pokeElectric) => pokeElectric.type[0] === 'electric')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeElectric.map(pokeCard).join('')}
-      `
-   }
-
-   if(fairyFinder == true) {
-      let pokemonTypeFairy = pokemons.filter((pokeFairy) => pokeFairy.type[0] === 'fairy')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFairy.map(pokeCard).join('')}
-      `
-   }
-
-   if(fightingFinder == true) {
-      let pokemonTypeFighting = pokemons.filter((pokeFighting) => pokeFighting.type[0] === 'fighting')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFighting.map(pokeCard).join('')}
-      `
-   }
-
-   if(fireFinder == true) {
-      let pokemonTypeFire = pokemons.filter((pokeFire) => pokeFire.type[0] === 'fire')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeFire.map(pokeCard).join('')}
-      `
-   }
-
-   if(ghostFinder == true) {
-      let pokemonTypeGhost = pokemons.filter((pokeGhost) => pokeGhost.type[0] === 'ghost')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGhost.map(pokeCard).join('')}
-      `
-   }
-
-   if(grassFinder == true) {
-      let pokemonTypeGrass = pokemons.filter((pokeGrass) => pokeGrass.type[0] === 'grass')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGrass.map(pokeCard).join('')}
-      `
-   }
-
-   if(groundFinder == true) {
-      let pokemonTypeGround = pokemons.filter((pokeGround) => pokeGround.type[0] === 'ground')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeGround.map(pokeCard).join('')}
-      `
-   }
-
-   if(iceFinder == true) {
-      let pokemonTypeIce = pokemons.filter((pokeIce) => pokeIce.type[0] === 'ice')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeIce.map(pokeCard).join('')}
-      `
-   }
-
-   if(normalFinder == true) {
-      let pokemonTypeNormal = pokemons.filter((pokeNormal) => pokeNormal.type[0] === 'normal')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeNormal.map(pokeCard).join('')}
-      `
-   }
-
-   if(poisonFinder == true) {
-      let pokemonTypePoison = pokemons.filter((pokePoison) => pokePoison.type[0] === 'poison')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypePoison.map(pokeCard).join('')}
-      `
-   }
-
-   if(psychicFinder == true) {
-      let pokemonTypePsychic = pokemons.filter((pokePsychic) => pokePsychic.type[0] === 'psychic')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypePsychic.map(pokeCard).join('')}
-      `
-   }
-
-   if(rockFinder == true) {
-      let pokemonTypeRock = pokemons.filter((pokeRock) => pokeRock.type[0] === 'rock')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeRock.map(pokeCard).join('')}
-      `
-   }
-
-   if(steelFinder == true) {
-      let pokemonTypeSteel = pokemons.filter((pokeSteel) => pokeSteel.type[0] === 'steel')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonTypeSteel.map(pokeCard).join('')}
-      `
-   }
-
-   if(waterFinder == true) {
-      let pokemonTypeWater = pokemons.filter((pokeWater) => pokeWater.type[0] === 'water')
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   }
-
-
-   if(candyTwelve == true) {
-
-      let pokemonCandyTwelve = pokemons.filter((pokemon) => {
-
-         if(pokemon.evolution['next-evolution'] !== undefined){
-
-         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '12'}
-
-      })
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyTwelve.map(pokeCard).join('')}
-      `
-   }
-
-   if(candyTwentyFive == true) {
-
-      let pokemonCandyTwentyFive = pokemons.filter((pokemon) => {
-
-         if(pokemon.evolution['next-evolution'] !== undefined){
-
-         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '25'}
-
-      })
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyTwentyFive.map(pokeCard).join('')}
-      `
-   }
-
-   if(candyFifty == true) {
-
-      let pokemonCandyFifty = pokemons.filter((pokemon) => {
-
-         if(pokemon.evolution['next-evolution'] !== undefined){
-
-         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '50'}
-
-      })
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyFifty.map(pokeCard).join('')}
-      `
-   }
-
-   if(candyAHundred == true) {
-
-      let pokemonCandyAHundred = pokemons.filter((pokemon) => {
-
-         if(pokemon.evolution['next-evolution'] !== undefined){
-
-         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '100'}
-
-      })
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyAHundred.map(pokeCard).join('')}
-      `
-   }
-
-   if(candyFourHundred == true) {
-
-      let pokemonCandyFourHundred = pokemons.filter((pokemon) => {
-
-         if(pokemon.evolution['next-evolution'] !== undefined){
-
-         return pokemon.evolution['next-evolution'][0]['candy-cost'] === '400'}
-
-      })
-
-      document.getElementById("pokemonss").innerHTML = `
-      ${pokemonCandyFourHundred.map(pokeCard).join('')}
-      `
-   }
-   
-}
-
-
-/* OBTENER DATOS Y MOSTRARLOS POR MEDIO DE LOOP
-for (let i = 0; i < pokemons.length; i++){
-    
-    let name = pokemons[i].name[0].toUpperCase()+pokemons[i].name.slice(1);
-    let pokeTypes = pokemons[i].type[0];
-    let imagen = pokemons[i].img;
-    let number = pokemons[i].num;
-    let color = colors[pokeTypes];
-    
-    document.getElementById("pokemonss").innerHTML += `
-    <div class= "pokemonCard" style="background-color:${color}"> 
-    <div class="imgContainer">
-    <img src="${imagen}"/> </div>
-    <div class="info">
-    <span class= "number"> # ${number} </span>
-    <h3 class = "name">${name} </h3>
-    <small class="type"> Tipo: <span>${pokeTypes} </span></small>
-    </div>
-    </div>
-    `
-   /*nombres.push(name);
-   imagenes.push(imagen);*/
-
-
-
-/* ESTO LOS ORDENA ALFABETICAMENTE
-arrayNombres.sort();
-console.log(arrayNombres);*/ 
