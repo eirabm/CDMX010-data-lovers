@@ -1,8 +1,10 @@
-import {example, getpokemoncito} from './data.js';
+import {getpokemoncito} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
-let typesToFilter=[];
+let typesToFilter= [];
+
+let CandyToFilter= [];
 
 const poks = data;
 
@@ -144,11 +146,11 @@ setFilters.onclick = function(){
 	document.getElementById("steel").checked ? typesToFilter.push('steel') : '';
 	document.getElementById("water").checked ? typesToFilter.push('water') : '';
 
-   let candyTwelve = document.getElementById("twelveCandy").checked;
-   let candyTwentyFive = document.getElementById("twentyFiveCandy").checked;
-   let candyFifty = document.getElementById("fiftyCandy").checked;
-   let candyAHundred = document.getElementById("aHundredCandy").checked;
-   let candyFourHundred = document.getElementById("fourhundredCandy").checked;
+	document.getElementById("twelveCandy").checked ? CandyToFilter.push('12') : '';
+   	document.getElementById("twentyFiveCandy").checked ? CandyToFilter.push('25') : '';
+    document.getElementById("fiftyCandy").checked ? CandyToFilter.push('50') : '';
+    document.getElementById("aHundredCandy").checked ? CandyToFilter.push('100') : '';
+    document.getElementById("fourhundredCandy").checked ? CandyToFilter.push('400') : '';
 
 	if (arrangeAZ == true){
 
@@ -176,84 +178,19 @@ setFilters.onclick = function(){
 	 }
 
 	
-	let uniqueFilters = [...new Set(typesToFilter)];
-	document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueFilters, pokemons, pokeCard)
+	let uniqueTypeFilters = [...new Set(typesToFilter)];
+	let uniqueCandyFilters = [...new Set(CandyToFilter)];
 
-	if(candyTwelve == true) {
 
-		let pokemonCandyTwelve = pokemons.filter((pokemon) => {
-  
-		   if(pokemon.evolution['next-evolution'] !== undefined){
-  
-		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '12'}
-  
-		})
-  
-		document.getElementById("pokemonss").innerHTML = `
-		${pokemonCandyTwelve.map(pokeCard).join('')}
-		`
+	console.log(getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard))
+
+	let filteredMappedPokemons = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
+
+	 if(filteredMappedPokemons.length == 0){
+		document.getElementById("pokemonss").innerHTML = `<h1>No hay ningún Pokemon disponible!</h1>`
+	 }else{
+		document.getElementById("pokemonss").innerHTML = filteredMappedPokemons
 	 }
-  
-	 if(candyTwentyFive == true) {
-  
-		let pokemonCandyTwentyFive = pokemons.filter((pokemon) => {
-  
-		   if(pokemon.evolution['next-evolution'] !== undefined){
-  
-		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '25'}
-  
-		})
-  
-		document.getElementById("pokemonss").innerHTML = `
-		${pokemonCandyTwentyFive.map(pokeCard).join('')}
-		`
-	 }
-
-	 if(candyFifty == true) {
-
-		let pokemonCandyFifty = pokemons.filter((pokemon) => {
-  
-		   if(pokemon.evolution['next-evolution'] !== undefined){
-  
-		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '50'}
-  
-		})
-  
-		document.getElementById("pokemonss").innerHTML = `
-		${pokemonCandyFifty.map(pokeCard).join('')}
-		`
-	 }
-  
-	 if(candyAHundred == true) {
-  
-		let pokemonCandyAHundred = pokemons.filter((pokemon) => {
-  
-		   if(pokemon.evolution['next-evolution'] !== undefined){
-  
-		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '100'}
-  
-		})
-  
-		document.getElementById("pokemonss").innerHTML = `
-		${pokemonCandyAHundred.map(pokeCard).join('')}
-		`
-	 }
-
-	 if(candyFourHundred == true) {
-
-		let pokemonCandyFourHundred = pokemons.filter((pokemon) => {
-  
-		   if(pokemon.evolution['next-evolution'] !== undefined){
-  
-		   return pokemon.evolution['next-evolution'][0]['candy-cost'] === '400'}
-  
-		})
-  
-		document.getElementById("pokemonss").innerHTML = `
-		${pokemonCandyFourHundred.map(pokeCard).join('')}
-		`
-	 }
-
 }
 
 
