@@ -1,31 +1,50 @@
 // estas funciones son de ejemplo
 
-export const example = () => {
-  return 'example';
-};
-
-export const anotherExample = () => {
-  return 'OMG';
-};
-
-
-
-export let getpokemoncito=(filterby, pokemons, pokeCard)=>{
-  if(filterby){
+let getcandy = (filterby, pokemons, pokeCard)=>{
   
-   let filters = filterby.map((filtro)=> pokemons.filter((pokemon) => pokemon.type[0] === filtro))
+    let pokemonsWithEvolution = pokemons.filter((filtro)=> filtro.evolution['next-evolution'])
 
-   let manyfilters = filters.length
+    let filterCandy = filterby.map((filtro)=> pokemonsWithEvolution.filter((pokemon) => 
+    pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro))
 
-   let mappedPokemons = filters.map((poke) => poke.map(pokeCard))
+    let candyMappedPokemons = filterCandy.map((poke) => poke.map(pokeCard).join(''))
 
-   return mappedPokemons
-
-
-//los poquemones filtrados
-  }else{
-//los poquemones sin filtro
-return "ale"
-  }
-
+   return candyMappedPokemons
 }
+
+
+
+
+export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
+
+
+  if(filterbyType.length > 0){
+
+    let filteredType = filterbyType.map((filtro)=> pokemons.filter((pokemon) => pokemon.type[0] === filtro))
+
+    let mappedPokemons = filteredType.map((poke) => poke.map(pokeCard))
+
+    
+      if(filterbyCandy.length == 0){
+
+        return mappedPokemons
+      }
+      else if(filterbyCandy.length > 0){
+
+        let pokemonsWithEvolution = filteredType.map((evoPoke) => evoPoke.filter((filtro)=> filtro.evolution['next-evolution']))
+
+        let filterCandy = filterbyCandy.map((filtro)=> pokemonsWithEvolution.map((pokeEvoCandy) => pokeEvoCandy.filter((pokemon) => 
+        pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro)))
+
+        console.log(filterCandy)
+
+        let candyMappedPokemons = filterCandy.map((mapCandy) => mapCandy.map((poke) => poke.map(pokeCard).join('')).join(''))
+
+        return candyMappedPokemons
+       }
+  }else if(filterbyCandy.length > 0) {
+      
+    return getcandy(filterbyCandy, pokemons, pokeCard)}
+}
+    
+    
