@@ -35,7 +35,6 @@ export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
 
         let candyMappedPokemons = filterCandy.map((mapCandy) => mapCandy.map((poke) => poke.map(pokeCard).join('')).join(''))
 
-
         return candyMappedPokemons
        }
   }else if(filterbyCandy.length > 0) {

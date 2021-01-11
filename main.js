@@ -70,7 +70,7 @@ searchFilters.onclick = function(){
 			return 0;
 		})
 
-		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('') 
+		document.getElementById("pokemonss").innerHTML = (sortedPokemons.map(pokeCard).join(''))
 	}
   
 	if (arrangeZA == true){
@@ -80,14 +80,20 @@ searchFilters.onclick = function(){
 			return 0;
 		});
   
-		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('') 
+		document.getElementById("pokemonss").innerHTML = `${sortedPokemons.map(pokeCard).join('')}`
 	}
 
-	let uniqueTypeFilters = [...new Set(typesToFilter)];
-	let uniqueCandyFilters = [...new Set(CandyToFilter)];
+	let uniqueTypeFilters = [...new Set(typesToFilter)]		//eslint-disable-line 
+	let uniqueCandyFilters = [...new Set(CandyToFilter)]	//eslint-disable-line 
 
-	document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
+	if(uniqueTypeFilters.length == 0 && uniqueCandyFilters.length == 0){
+		return
+	}else{
+		document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
 	}
+}
+
+
 
    let refrescar = document.getElementById("regresar");
    refrescar.onclick = function(){   
