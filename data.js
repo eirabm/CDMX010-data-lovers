@@ -14,7 +14,6 @@ let getcandy = (filterby, pokemons, pokeCard)=>{
 
 
 
-
 export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
 
 
@@ -22,7 +21,7 @@ export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
 
     let filteredType = filterbyType.map((filtro)=> pokemons.filter((pokemon) => pokemon.type[0] === filtro))
 
-    let mappedPokemons = filteredType.map((poke) => poke.map(pokeCard))
+    let mappedPokemons = filteredType.map((poke) => poke.map(pokeCard).join('')).join('')
 
     
       if(filterbyCandy.length == 0){
@@ -36,9 +35,8 @@ export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
         let filterCandy = filterbyCandy.map((filtro)=> pokemonsWithEvolution.map((pokeEvoCandy) => pokeEvoCandy.filter((pokemon) => 
         pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro)))
 
-        console.log(filterCandy)
-
         let candyMappedPokemons = filterCandy.map((mapCandy) => mapCandy.map((poke) => poke.map(pokeCard).join('')).join(''))
+
 
         return candyMappedPokemons
        }

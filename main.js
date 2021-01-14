@@ -10,6 +10,7 @@ const poks = data;
 
 const pokemons = poks.pokemon;
 
+
 //Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
 const colors = {
 	fire: '#FDDFDF',
@@ -43,23 +44,26 @@ let number = pokemons.map((pokeNum) => pokeNum.num);*/
 //Indicamos que en la sección "pokemonss" se va a pintar la información de los pokemons con el diseño de la pokeCard.
 //Nota 1. "map" sirve para ****************
 //Nota 2. "join('')" sirve para que existan espacios entre cada objeto.
-document.getElementById("pokemonss").innerHTML = `
-${pokemons.map(pokeCard).join('')}
-`
+
+	document.getElementById("pokemonss").innerHTML = `
+	${pokemons.map(pokeCard).join('')}
+	`
+
 //Se define una función donde se diseña lo que contendrán las tarjetas pokemón y la información filtrada de cada pokemón que se requiere.
 //Nota. "toUpperCase" esta indicando que la letra sea en mayuscula y con "slice" lo cortamos para que las siguientes se sigan viendo en minusculas.
 function pokeCard(pokemones){
 	return `
-	<div class="pokemonCard" id= "pokemonCard" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
-	<div class="imgContainer">
+	<div class="pokemonCard" id="${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
+	<div class="imgContainer" id="${pokemones.num}">
 	<img src="${pokemones.img}"/> </div>
-	<div class="info">
-	<span class= "number" id="number">${pokemones.num} </span>
+	<div class="info" id="${pokemones.num}>
+	<span class= "number"> ${pokemones.num} </span>
 	<h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
 	<small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
 	</div>
 	</div>`
 }
+
 
 function pokeIndividualInfo (pokemones){
 	return `
@@ -71,7 +75,6 @@ function pokeIndividualInfo (pokemones){
 	   <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
 	   <p class="information"> Tipo: ${pokemones.type[0]} <br>
 	   Lugar de aparición: ${pokemones.generation['name']} <br>
-	   Siguiente evolución: ${pokemones.evolution['next-evolution'][0]['name']}</p>     
 	   <p class = "about">${pokemones.about}</p>
 	</div>
 	<div class="extra">
@@ -88,22 +91,8 @@ function pokeIndividualInfo (pokemones){
 	</div>   
 	</div>   
 	`
- };
+ }    
 
- window.getPokemon = function showThisPokemon(){
-	for (let i=0; i < document.getElementById("pokemonss").children.length ; i++){
-
-	   document.getElementById("pokemonss").children[i].onclick = function(){
-
-		  let pokemonIndex = i;
-		  let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num == (i + 1))
-
-		  document.getElementById("pokemonss").innerHTML = `
-		  ${getThisPokemon.map(pokeIndividualInfo).join('')}
-		  `
-		 }
-	   }
-	}
 
 
 /*BOTON BUSCAR POR NOMBRE*/
@@ -124,6 +113,11 @@ searchByName.onclick = function(){
 
 let setFilters = document.getElementById("search");
 setFilters.onclick = function(){
+
+	typesToFilter.length= 0;
+
+	CandyToFilter.length= 0;
+
 
 	let arrangeAZ = document.getElementById("az").checked;
     let arrangeZA = document.getElementById("za").checked;
@@ -181,16 +175,43 @@ setFilters.onclick = function(){
 	let uniqueTypeFilters = [...new Set(typesToFilter)];
 	let uniqueCandyFilters = [...new Set(CandyToFilter)];
 
+	
 
-	console.log(getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard))
+	document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
 
-	let filteredMappedPokemons = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
-
-	 if(filteredMappedPokemons.length == 0){
-		document.getElementById("pokemonss").innerHTML = `<h1>No hay ningún Pokemon disponible!</h1>`
-	 }else{
-		document.getElementById("pokemonss").innerHTML = filteredMappedPokemons
-	 }
 }
 
+let regresar = document.getElementById("regresar");
+//Definimos el evento del DOM "onclick" del botón.
+
+regresar.onclick = function(){   
+	document.getElementById("pokemonss").innerHTML = `
+	${pokemons.map(pokeCard).join('')}
+	`
+}
+
+
+ 
+let pokeContainer = document.getElementById("pokemonss");
+pokeContainer.addEventListener("click", getAPokemon);
+
+function getAPokemon(poke) {
+
+	if(poke.target !== poke.currentTarget){
+
+		let clickedItem = poke.target.id;
+
+		let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num === clickedItem)
+		
+		document.getElementById("pokemonss").innerHTML = `
+		${getThisPokemon.map(pokeIndividualInfo).join('')}
+		`
+	   }
+}
+ 
+ 
+ 
+ 
+ 
+ 
 
