@@ -11,7 +11,6 @@
     border-color: black 2px;
 }
 .navbar{    
-    display: inline-block;
     padding-top: 28px;
     padding-left: 40px;
     padding-right: 40px;
@@ -46,11 +45,10 @@
 }
 .favoritePokemon{
     margin-left: 33px;
-    font-weight: bold;    
+    font-weight: bold;  
+    font-size: 15px;  
 }
-.favoritePokemon{
-    font-size: 15px;
-}
+
 .pokemonName{
     margin-top: 8px;
     margin-left: 33px;
@@ -81,6 +79,20 @@
     width: 270px;
     position: absolute;
 }
+
+.return{    
+    border-radius: 6px;
+    padding: 3px;
+    width: 215px; 
+    margin-top: 19px;
+    margin-bottom: 80px;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    outline: none;  
+    background-color: #51adcf;
+    border: 2px #51adcf solid;
+    color: white
+}
+
 .line{
     margin-left: 18px;
     margin-top: 27px;
@@ -104,7 +116,9 @@
     border: 2px #0E918C solid;
     color: white
 }
-.filter{
+
+
+.filterList{
     display: flex;
     flex-direction: row;
 }
@@ -275,4 +289,38 @@
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+label{
+    font-family: 'Heebo', sans-serif, bold;
+    width: 270px;
+    margin-left: 33px;
+    font-weight: bold;  
+    font-size: 15px;  
+    
+
+}
+
+
+
+@media screen and (max-width: 992px) {
+
+label{
+    cursor: pointer;
+    
+}
+
+.navbar{
+    display: flex;    
+    flex-direction: column;
+}
+
+.filterList {
+    display: none;
+}
+
+#toggle:checked + .filterList{
+    display: block;
+}
+
 }

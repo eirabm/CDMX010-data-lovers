@@ -2,22 +2,22 @@ import { example, anotherExample } from '../src/data.js';
 
 
 describe('example', () => {
-  it('is a function', () => {
+  it.skip('is a function', () => {
     expect(typeof example).toBe('function');
   });
 
-  it('returns `example`', () => {
+  it.skip('returns `example`', () => {
     expect(example()).toBe('example');
   });
 });
 
 
 describe('anotherExample', () => {
-  it('is a function', () => {
+  it.skip('is a function', () => {
     expect(typeof anotherExample).toBe('function');
   });
 
-  it('returns `anotherExample`', () => {
+  it.skip('returns `anotherExample`', () => {
     expect(anotherExample()).toBe('OMG');
   });
 });
