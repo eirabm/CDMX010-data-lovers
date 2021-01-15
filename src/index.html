@@ -43,25 +43,33 @@
     <hr class="endNavbar">    
 
     <!-- Buscar Pokempon por nombre -->
-    
+
     <div class="search">
       <section>
         <div class="findPokemon">
           <p class="favoritePokemon">¡Encuentra tu Pokemón favorito!</p>
           <div class="flexbox">
           <input type="text" placeholder="Nombre" class="pokemonName" id="nameToSearch">
-          <button type="button" class="searchName" id= "searchName">Buscar</button>        
-        </div>
-        </div>
+          <button type="button" class="searchName" id= "searchName">Buscar</button> 
+          </div>
+    
+          
         <hr class="line">
+          
+       </div>
       </section>
     </div> 
     
     <!-- Filtros -->
     <div class="filter">
+      
+      <label for="toggle">Filtros</label>
+        <input type="checkbox" id="toggle"/>
+
+      <div class="filterList">
       <section>        
           <ul>
-            <li><p class="filtros">Filtros</p></li>
+            
             <li><p class="nombre">Nombre</p></li>
 
             <div class="alphabet">          
@@ -192,6 +200,7 @@
           <li></li>
           </ul>        
       </section>
+    </div>
     </div>
     </div>
 
