@@ -33,16 +33,10 @@ const colors = {
    ghost: '#E0BBE4'
 };
 
-/*ADQUIRIR VARIABLES POR MEDIO DE MAP********************
-let name = pokemons.map((pokeName) => pokeName.name);
-let pokeTypes = pokemons.map((pokeType) => pokeType.type[0]);
-let imagen = pokemons.map((pokeImg) => pokeImg.img);
-let number = pokemons.map((pokeNum) => pokeNum.num);*/
-
 /*TARJETAS DE POKEMONES EN LA PANTALLA PRINCIPAL*/
 
 //Indicamos que en la sección "pokemonss" se va a pintar la información de los pokemons con el diseño de la pokeCard.
-//Nota 1. "map" sirve para ****************
+//Nota 1. "map" sirve para transformar / conservar el arreglo original. En este caso esta accediendo a cada pokemon del arreglo.
 //Nota 2. "join('')" sirve para que existan espacios entre cada objeto.
 
 	document.getElementById("pokemonss").innerHTML = `
@@ -93,9 +87,36 @@ function pokeIndividualInfo (pokemones){
 	`
  }    
 
+/* VER LA INFORMACIÓN GENERAL DE CADA POKEMÓN DE FORMA INDIVIDUAL*/
 
+//Definimos la variable del contenedor.
+let pokeContainer = document.getElementById("pokemonss");
 
-/*BOTON BUSCAR POR NOMBRE*/
+//Al contenedor le definimos un "eventyListener", que al hacer "click" ejecutará la función "getAPokemon"
+pokeContainer.addEventListener("click", getAPokemon);
+
+// Cuando se haga "click" se va a ejecutar la función "getAPokemon", donde la "e" es un parámetro que en este caso se refiere al "evento"
+function getAPokemon(e) {
+   //Si donde le estamos dando click es diferente al contenedor general, entonces se ejecutará lo siguiente:
+	if (e.target !== e.currentTarget){
+      //Nos muestra en pantalla toda la información que tiene la sección que estamos seleccionado, en este caso de la pokecard//
+      // console.log("adios", e.target)
+      //Nos muestra en pantalla la información del contenedor del pokemon.
+      // console.log("aqui", e.currentTarget)
+      //Definimos una variable que contendra el "id" del objeto al que le demos click, en este caso a la tarejeta del Pokemón.
+		let clickedItem = e.target.id;
+      //Definimos una variable, donde filtraremos la información del Pokemón y buscaremos su "num" = "id", el cual debe ser igual al "clickedItem" que definimos anteriormente.
+		let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num === clickedItem)
+		//Pintamos la información en pantalla
+		document.getElementById("pokemonss").innerHTML = `
+		${getThisPokemon.map(pokeIndividualInfo).join('')}
+		`
+	   }   
+}
+
+/********************************************************************************** */
+
+/*BOTON PARA BUSCAR POR NOMBRE*/
 
 //Definimos una variable para traer el id del botón.
 let searchByName = document.getElementById("searchName");
@@ -109,7 +130,7 @@ searchByName.onclick = function(){
     document.getElementById("pokemonss").innerHTML = `
     ${foundName.map(pokeIndividualInfo).join('')}
     `
-   }
+   };
 
 let setFilters = document.getElementById("search");
 setFilters.onclick = function(){
@@ -169,49 +190,51 @@ setFilters.onclick = function(){
 		document.getElementById("pokemonss").innerHTML = `
 		${sortedPokemons.map(pokeCard).join('')}
 		` 
-	}
+	 }
 
-	
-	let uniqueTypeFilters = [...new Set(typesToFilter)];
+   /*FILTRAR POKEMONES SEGÚN SU TIPO* ************************************/   
+   // Los 3 puntos indican que estamos obteniendo los Pokemones que se guardaron en la constante "typesToFilter" y de todos los pokemones, se hace un "new set" del arreglo que corresponda a los filtros según el tipo que seleccionamos
+   // Nota 1. Con "new" estamos indicando que vamos a crear un nuevo arreglo de los Pokemones ya filtrados en "typesTofIlter"
+   // Nota 2. Con "set" nos aseguramos que no se repitan Pokemones, si es que se presiona 2 veces el botón buscar.
+   let uniqueTypeFilters = [...new Set(typesToFilter)];
+
+   /*FILTRAR POR EL NÚMERO DE CARAMELOS QUE NECESITA CADA POKEMON PARA EVOLUCIONAR */	
 	let uniqueCandyFilters = [...new Set(CandyToFilter)];
 
-	
+   // Aqui estamos imprimiendo la función de getpokemoncito(que se encuentra en data), en relación a "uniquefilters (let definida con los pokemons)", "pokemons (const de los pokemones)" y "pokecard (diseño de las tarjetas)"
+   console.log (getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard));
 
-	document.getElementById("pokemonss").innerHTML = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
+      //Definimos una variable con la información ya filtrada totalmente de los pokemones.
+      let filteredMappedPokemons = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
 
-}
+       console.log("hola", filteredMappedPokemons)
 
-let regresar = document.getElementById("regresar");
-//Definimos el evento del DOM "onclick" del botón.
+      // Si no existen pokemones filtradsos por tipo que correspondan al numero de caramelos seleccionados, se verá el mensaje "No hay pokemones"
+	    if(filteredMappedPokemons.length == 0){
+     
+      document.getElementById("pokemonss").innerHTML = `<h1>No hay ningún Pokemon disponible!</h1>`
+        // Si existen pokemones filtradsos por tipo que correspondan al numero de caramelos seleccionados, se desplegarán en la pantalla.
+	    }else{
+		document.getElementById("pokemonss").innerHTML = filteredMappedPokemons
+       }   
+};
 
-regresar.onclick = function(){   
-	document.getElementById("pokemonss").innerHTML = `
-	${pokemons.map(pokeCard).join('')}
-	`
-}
+   //Refrescar la pantalla
+   let refrescar = document.getElementById("regresar");
+   //Definimos el evento del DOM "onclick" del botón, para que se vean todos los pokemones cuando lo presionen
+   refrescar.onclick = function(){   
+    document.getElementById("pokemonss").innerHTML = `
+    ${pokemons.map(pokeCard).join('')}
+    `  
+   };
 
+   //query del navbar
 
- 
-let pokeContainer = document.getElementById("pokemonss");
-pokeContainer.addEventListener("click", getAPokemon);
+   let desplegar = document.getElementById("menu");
 
-function getAPokemon(poke) {
+   desplegar.onclick = function(){
 
-	if(poke.target !== poke.currentTarget){
-
-		let clickedItem = poke.target.id;
-
-		let getThisPokemon = pokemons.filter((searchThisPokemon) => searchThisPokemon.num === clickedItem)
-		
-		document.getElementById("pokemonss").innerHTML = `
-		${getThisPokemon.map(pokeIndividualInfo).join('')}
-		`
-	}
-}
- 
- 
- 
- 
- 
- 
-
+      var navbar = document.getElementById("nav");
+      
+      navbar.classList.toggle("show");
+   }

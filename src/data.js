@@ -1,4 +1,4 @@
-// estas funciones son de ejemplo
+// EN ESTA SECCIÓN SE FILTRA LA INFORMACIÓN.
 
 let getcandy = (filterby, pokemons, pokeCard)=>{
   
