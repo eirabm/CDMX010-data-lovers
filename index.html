@@ -5,28 +5,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">     
     <link rel="stylesheet" href="style.css" />
+    <!-- Esta parte es referente a las medias querys, con esto indicamos que queremos que nuestra página se adapte al tamaño de un celular" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Lovers</title>
   </head>
 
   <body>
-    <!-- Barra de navegación -->
-    <div class="menu">
-      <ul>
-        <li class="navbar">Novedades</li>
-        <li class="navbar">Colecciones</li>
-        <li class="navbar">Sale</li>
-        <li><img src="imagenes/Título.PNG" class="name"></li>
-        <li class="navbar">Sucursales</li>
-        <li class="navbar">Contacto</li>
-        <li class="navbar"><img src="imagenes/profile-user.png" class="user"></li>
-        <li class="navbar"><img src="imagenes/buy.png" class="car"></li>
-      </ul>
-    </div>
-    <hr class="endNavbar">
+
+      <!-- Barra de navegación -->
+
+    <header>
+
+      <div class="toggle-btn" id="menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="logo">
+          <img src="imagenes/Título.PNG" class="name">
+      </div>
+
+      <nav id="nav">
+        <ul>
+          <li><p>Colecciones</p></li>
+          <li><p>Sale</p></li>
+          <li><p>Sucursales</p></li>
+          <li><p>Contacto</p></li>
+          <li><p><img src="imagenes/profile-user.png" class="user"></p></li>
+          <li><p><img src="imagenes/buy.png" class="car"></p></li>
+        </ul>
+      </nav>
+
+    </header>
+    <hr class="endNavbar">    
 
     <!-- Buscar Pokempon por nombre -->
+    
     <div class="search">
       <section>
         <div class="findPokemon">
@@ -179,9 +196,7 @@
             <p class="az">400</p>
             </div>
 
-            <button type="button" class="searchFilter" id="search">Buscar</button>
-            <button type="button" class="return" id="regresar">Página principal</button>
-
+            <button type="button" class="searchFilter" id="search">Buscar</button>            
           <li></li>
           </ul>        
       </section>
@@ -191,8 +206,11 @@
 
       <!-- Lista de Pokemones -->
       <div class="pokemonList">
-        <section class="pokemons">            
+        <section class="pokemons">
+          <div class="atras">
+          <button type="button" class="back" id="regresar"> < &nbsp; Atrás</button>            
           <p class="pokemons" id="pokemons">POKEMONES</p>
+          </div>
           <div class="pokemonss" id="pokemonss"></div>
         </section>
       </div>
