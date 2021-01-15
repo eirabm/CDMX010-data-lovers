@@ -141,7 +141,7 @@ setFilters.onclick = function(){
 	document.getElementById("water").checked ? typesToFilter.push('water') : '';
 
 	document.getElementById("twelveCandy").checked ? CandyToFilter.push('12') : '';
-   	document.getElementById("twentyFiveCandy").checked ? CandyToFilter.push('25') : '';
+	document.getElementById("twentyFiveCandy").checked ? CandyToFilter.push('25') : '';
     document.getElementById("fiftyCandy").checked ? CandyToFilter.push('50') : '';
     document.getElementById("aHundredCandy").checked ? CandyToFilter.push('100') : '';
     document.getElementById("fourhundredCandy").checked ? CandyToFilter.push('400') : '';
@@ -150,26 +150,26 @@ setFilters.onclick = function(){
 
 		let sortedPokemons = pokemons.sort(function(a,b){
   
-		   if (a.name < b.name) return -1;
-		   if (a.name > b.name) return 1;
-		   return 0;
+			if (a.name < b.name) return -1;
+			if (a.name > b.name) return 1;
+			return 0;
 		});
 		document.getElementById("pokemonss").innerHTML = `
 		${sortedPokemons.map(pokeCard).join('')}
 		` 
-	 }
+	}
   
-	 if (arrangeZA == true){
+	if (arrangeZA == true){
 		let sortedPokemons = pokemons.sort(function(a,b){
-		   if (a.name < b.name) return 1;
-		   if (a.name > b.name) return -1;
-		   return 0;
+			if (a.name < b.name) return 1;
+			if (a.name > b.name) return -1;
+			return 0;
 		});
   
 		document.getElementById("pokemonss").innerHTML = `
 		${sortedPokemons.map(pokeCard).join('')}
 		` 
-	 }
+	}
 
 	
 	let uniqueTypeFilters = [...new Set(typesToFilter)];
@@ -206,7 +206,7 @@ function getAPokemon(poke) {
 		document.getElementById("pokemonss").innerHTML = `
 		${getThisPokemon.map(pokeIndividualInfo).join('')}
 		`
-	   }
+	}
 }
  
  
