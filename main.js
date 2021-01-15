@@ -91,6 +91,33 @@ function pokeIndividualInfo (pokemones){
    `
 };
 
+function pokeIndividualInfo (pokemones){
+	return `
+	<div class="individualPokeCard">
+	<div class="imgContainter">
+	<img class="pokemon" src="${pokemones.img}"/>
+	</div> 
+	<div class="cardText"> 
+	   <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
+	   <p class="information"> Tipo: ${pokemones.type[0]} <br>
+	   Lugar de aparición: ${pokemones.generation['name']} <br>
+	   <p class = "about">${pokemones.about}</p>
+	</div>
+	<div class="extra">
+	<div class="info" style="background-color:${colors[pokemones.type[0]]}">
+	 <div class="stats">         
+	  <h5 class = "height"> Altura: <br> ${pokemones.size['height']} </h5> 
+	  <span class="linee"></span>      
+	  <h5 class = "weight"> Peso: <br> ${pokemones.size['weight']} </h5>     
+	  <span class="linee"></span> 
+	  <h5 class = "attack"> Estadísticas <br> de ataque: <br> ${pokemones.stats['base-attack']} </h5>  
+	  <span class="linee"></span>       
+	  <h5 class = "defense"> Estadísticas <br> de defensa: <br> ${pokemones.stats['base-defense']} </h5>  
+	  <span class="linee></span>     
+	</div>   
+	</div>   
+	`
+ }    
 
 /* VER LA INFORMACIÓN GENERAL DE CADA POKEMÓN DE FORMA INDIVIDUAL*/
 
