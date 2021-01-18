@@ -11,7 +11,7 @@
     "open-coverage-report": "opener ./coverage/lcov-report/index.html",
     "start": "serve src/",
     "deploy": "gh-pages -d src",
-    "algo":"jest"
+    "algo":"jest"    
   },
   "dependencies": {
     "@babel/core": "^7.6.2",
