@@ -4,33 +4,27 @@
     margin-top: 10px;  
     margin-left: 42px;  
 }
-
 .user{
     width: 100%;
     max-width: 30px; 
 }
-
 .car{
     width: 100%;
     max-width: 30px; 
 }
-
 .endNavbar{
     background-color: #c4c4c4;
     width: 100%;
     position: absolute;
    
 }
-
 .findPokemon{
     font-family: 'Heebo', sans-serif;
 }
-
 .flexbox{
     display: flex;
     flex-direction: column;
 }
-
 .favoritePokemon{
     margin-left: 33px;
     margin-top: 30px;
@@ -47,7 +41,6 @@
     border:1px #B4B2B2 solid;
     outline: none;  
 }
-
 .searchName{
     margin-left: 33px;
     border-radius: 6px;
@@ -60,16 +53,27 @@
     border: 2px #0E918C solid;
     color: white
 }
-
 .searchName:hover{
     cursor: pointer;
 }
-
 .search{   
     display: flex;
     flex-direction: row; 
     width: 270px;
     position: absolute;
+}
+
+.return{    
+    border-radius: 6px;
+    padding: 3px;
+    width: 215px; 
+    margin-top: 19px;
+    margin-bottom: 80px;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    outline: none;  
+    background-color: #51adcf;
+    border: 2px #51adcf solid;
+    color: white
 }
 
 .line{
@@ -78,12 +82,13 @@
     background-color: #c4c4c4;
 }
 
-.filter ul{
+.filterList ul{
     font-family: 'Heebo', sans-serif;
     list-style: none;
-    margin-top: 155px;
+    margin-top: 35px;
     width: 270px;
-    position: absolute;
+    position: relative;
+    margin-left: -85px;
 }
 
 .searchFilter{    
@@ -132,9 +137,28 @@
 }
 
 .filter{
+    font-family: 'Heebo', sans-serif;
+    margin-top: 200px;
+    width: 270px;
+    position: absolute;
     display: flex;
     flex-direction: row;
+}
 
+
+label{
+    margin-left: 35px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+label span{
+    visibility: hidden;
+}
+
+
+#toggle{
+    display: none;
 }
 
 .searchFilter:hover{
@@ -152,7 +176,9 @@
 .alphabet{
     display: flex;    
 }
-
+.alphabet1{
+    display: flex;    
+}
 .az{
     margin: 0%;  
     font-size: 14px;
@@ -169,17 +195,14 @@
     font-size: 14px;
     font-weight: bold;
 }
-
 .tipo{
     font-size: 14px;
     font-weight: bold;
 }
-
 .caramelos{
     font-size: 14px;
     font-weight: bold;
 }
-
 .pokemonList{
     display: flex;    
     flex-direction: column;    
@@ -201,9 +224,7 @@
     padding-bottom: 13px;
     font-size: 25px;
 }
-
 /*Esta parte da formato a las fichas del pokemon */
-
 .pokemonss{
     display: flex;
     flex-wrap: wrap;
@@ -212,7 +233,6 @@
     margin-left: 50px;
     max-width: 1200px;
 }
-
 .pokemonCard {
 	background-color: #eee;
 	border-radius: 20px;
@@ -221,8 +241,6 @@
 	padding: 20px;
 	text-align: center;
 }
-
-
 .pokemonCard .imgContainer {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
@@ -230,36 +248,29 @@
 	height: 120px;
 	text-align: center;
 }
-
 .pokemonCard .imgContainer img {
 	margin-top: 20px;
 	max-width: 90%;
 }
-
 .pokemonCard .info {
 	margin-top: 10px;
 }
-
 .pokemonCard .number {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 	font-size: 0.8em;
 	padding: 5px 10px;
 }
-
 .pokemonCard .name {
 	margin: 15px 0 7px;
 	letter-spacing: 1px;
 }
-
 /*Esta parte es el formato de la info de un pokemon*/
-
 .individualPokeCard{
     display: flex;
     margin: 0 auto;
     max-width: 1200px;
 }
-
 .individualPokeCard .imgContainer {
     background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
@@ -267,12 +278,10 @@
 	height: 500px;
 	text-align: center;
 }
-
 .individualPokeCard .imgContainer img {
 	margin-top: 200px;
 	max-width: 90%;
 }
-
 .individualPokeCard .info {
     background-color: #eee;
 	border-radius: 20px;
@@ -288,7 +297,6 @@
     display: flex;
     flex-direction: column;
 }
-
 .imgContainter{
     display: flex;
     justify-content: center;
@@ -308,18 +316,15 @@
     flex-direction: column;
     text-align: justify;   
 }
-
 .information{
     margin-left: 189px;
     font-size: 15px;
 }
-
 .typeCard{
     color: #838383;
     padding-top: 0%;
     margin-top: 0%;
 }
-
 .stats{
     display: flex;
     flex-direction: row;
@@ -335,14 +340,12 @@
     margin-left: 177px;
     margin-right: 175px;
 }
-
 .about{
     margin-left: 189px;
     margin-right: 189px;
     text-align: justify;
     font-size: 15px;
 }
-
 .pokename{
     font-size: 26px;
     margin-bottom: unset;
@@ -396,7 +399,6 @@ nav ul li p{
 }
 
 .toggle-btn span{
-    display: inline-block;    
     float: left;
     width: 100%;
     height: 2px;
@@ -464,13 +466,22 @@ nav ul li p{
     }
     /* FILTROS RESPONSIVOS */
     .filter{
-        margin-top: 10px;
+        font-family: 'Heebo', sans-serif;
+        margin-top: 20px;
+        margin-left: 20px;
         position:relative;
+        width: 100%;
     }
 
     .filterList{
         display: none;
-        align-self: center;
+        align-self: center;       
+    }
+
+    .filterList ul{
+        padding-left: 13px;
+        display: flex;
+        flex-direction: row;
     }
 
     .filterList ul li{
@@ -489,9 +500,36 @@ nav ul li p{
         margin-top: 0;
     }
 
-    .filterlist{
-
+    .alphabet1{
+        margin-top: 48px;
     }
+
+    .alpha{
+        display: flex;
+        flex-direction: column;
+    }
+    .type{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+    }
+    .tipo{
+        margin-left: 3px;
+    }
+    .type2{
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+        margin-top: 47px;
+    }
+    .filters1{
+        display: flex;
+    }
+    .filters2{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
 
     #toggle:checked + .filterList{
         display:inline-block;
@@ -507,6 +545,8 @@ nav ul li p{
     }
 }  
     
+
+
 
 
 @media(max-width: 817px){
@@ -525,6 +565,8 @@ nav ul li p{
     nav.show{
         display: block;
     }
+
+
 }
 
 @media(max-width: 769px){
@@ -544,6 +586,8 @@ nav ul li p{
     nav.show{
         display: block;
     }
+
+
 }
 
 @media(max-width: 728px){
