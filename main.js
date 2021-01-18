@@ -1,17 +1,15 @@
 import {getpokemoncito} from './data.js';
-
 import data from './data/pokemon/pokemon.js';
 
-let typesToFilter= [];
-
-let CandyToFilter= [];
-
+//Obtenemos la información de la base de datos local y los definimos en la constante "poks".
 const poks = data;
-
+//Obtenemos el objeto de cada Pokemón y lo guardamos en otra constante.
 const pokemons = poks.pokemon;
-
-
-//Definimos una variable donde se empujarán y guardarán los nombres de los pokemons *****************
+//Aqui se guatdan todos los pokemones cuando verificamos que el input esta cheked
+let typesToFilter = [];
+//Aqui guardamos lod dulces, cuando el input esta checked
+let candyToFilter = [];
+//Definimos una constante con un arreglo de colores.
 const colors = {
 	fire: '#FDDFDF',
 	grass: '#b4ecb4',
@@ -38,26 +36,60 @@ const colors = {
 //Indicamos que en la sección "pokemonss" se va a pintar la información de los pokemons con el diseño de la pokeCard.
 //Nota 1. "map" sirve para transformar / conservar el arreglo original. En este caso esta accediendo a cada pokemon del arreglo.
 //Nota 2. "join('')" sirve para que existan espacios entre cada objeto.
+document.getElementById("pokemonss").innerHTML = `
+${pokemons.map(pokeCard).join('')}
+`
+/*ESTILO DE LAS TARJETAS PRINCIPALES  DE LOS POKEMONES */
 
-	document.getElementById("pokemonss").innerHTML = `
-	${pokemons.map(pokeCard).join('')}
-	`
+//Se define una función, indicando el siseño que contendrá cada tarjeta Pokemón de la pantalla principal, usando un "literal Template"
+//Nota 1. "toUpperCase" esta indicando que las letra sea en mayuscula y con "slice" lo cortamos para que las siguientes se sigan viendo en minusculas.
+//Nota 2. "span" se utiliza para utilizar/enfatizar unicamente en una parte del texto y no todo un bloque como lo hace "div"
+//Nota 3. "small" se utiliza para hacer pequeño una parte del texto.
 
-//Se define una función donde se diseña lo que contendrán las tarjetas pokemón y la información filtrada de cada pokemón que se requiere.
-//Nota. "toUpperCase" esta indicando que la letra sea en mayuscula y con "slice" lo cortamos para que las siguientes se sigan viendo en minusculas.
 function pokeCard(pokemones){
-	return `
-	<div class="pokemonCard" id="${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
-	<div class="imgContainer" id="${pokemones.num}">
-	<img src="${pokemones.img}"/> </div>
-	<div class="info" id="${pokemones.num}>
-	<span class= "number"> ${pokemones.num} </span>
-	<h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
-	<small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
-	</div>
-	</div>`
-}
+   return `
+   <div class="pokemonCard" id= "${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
+   <div class="imgContainer">
+   <img src="${pokemones.img}"/> </div>
+   <div class="info">
+   <span class= "number"> # ${pokemones.num} </span>
+   <h3 class = "name">${pokemones.name[0].toUpperCase()+pokemones.name.slice(1)} </h3>
+   <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
+   </div>
+   </div>`
+};
 
+
+/*ESTILO DE LAS TARJETAS INFORMATIVAS  DE LOS POKEMONES */
+
+function pokeIndividualInfo (pokemones){
+   return `
+   <div class="individualPokeCard">
+   <div class="imgContainter">
+   <img class="pokemon" src="${pokemones.img}"/>
+   </div> 
+   <div class="cardText"> 
+      <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
+      <p class="information"> Tipo: ${pokemones.type[0]} <br>
+      Lugar de aparición: ${pokemones.generation['name']} <br>     
+      <p class = "about">${pokemones.about}</p>
+   </div>
+   <div class="extra">
+   <div class="info" style="background-color:${colors[pokemones.type[0]]}">
+    <div class="stats">         
+     <h5 class = "height"> Altura: <br> ${pokemones.size['height']} </h5> 
+     <span class="linee"></span>      
+     <h5 class = "weight"> Peso: <br> ${pokemones.size['weight']} </h5>     
+     <span class="linee"></span> 
+     <h5 class = "attack"> Estadísticas <br> de ataque: <br> ${pokemones.stats['base-attack']} </h5>  
+     <span class="linee"></span>       
+     <h5 class = "defense"> Estadísticas <br> de defensa: <br> ${pokemones.stats['base-defense']} </h5>        
+   </div>  
+   </div> 
+   </div>   
+   </div>   
+   `
+};
 
 function pokeIndividualInfo (pokemones){
 	return `
@@ -132,18 +164,26 @@ searchByName.onclick = function(){
     `
    };
 
-let setFilters = document.getElementById("search");
-setFilters.onclick = function(){
-
-	typesToFilter.length= 0;
-
-	CandyToFilter.length= 0;
 
 
-	let arrangeAZ = document.getElementById("az").checked;
-    let arrangeZA = document.getElementById("za").checked;
+/*BOTON PARA BUSCAR CON LOS FILTROS*/
 
-	document.getElementById("bug").checked ? typesToFilter.push('bug') : '';
+//Definimos una variable para obtener el id del botón.
+let searchFilters = document.getElementById("search");
+//Definimos el evento del DOM "onclick" del botón.
+searchFilters.onclick = function(){  
+   //Borrar la información si ya no se quiere seleccionar algún el filtro de un input y solo queden los seleccionados
+	typesToFilter.length = 0;
+	candyToFilter.length = 0;
+
+
+   //Se definen las variables para filtrar la información en orden alfabético.
+   let arrangeAZ = document.getElementById("az").checked;
+   let arrangeZA = document.getElementById("za").checked;
+   
+   //Filtro por tipo de Pokemón
+   //Utilizamos un operador ternario para definir las condiciones = Si el input de "bug" se encuentra checked, entonces se va a empujar ese insecto a la variable vacia "typesToFilter" que definimos al principio, si no no va a realizar nada.
+   document.getElementById("bug").checked ? typesToFilter.push('bug') : '';
 	document.getElementById("dark").checked ? typesToFilter.push('dark') : '';
 	document.getElementById("dragon").checked ? typesToFilter.push('dragon') : '';
 	document.getElementById("electric").checked ? typesToFilter.push('electric') : '';
@@ -217,7 +257,7 @@ setFilters.onclick = function(){
 	    }else{
 		document.getElementById("pokemonss").innerHTML = filteredMappedPokemons
        }   
-};
+}
 
    //Refrescar la pantalla
    let refrescar = document.getElementById("regresar");
@@ -226,7 +266,7 @@ setFilters.onclick = function(){
     document.getElementById("pokemonss").innerHTML = `
     ${pokemons.map(pokeCard).join('')}
     `  
-   };
+   }
 
    //query del navbar
 
