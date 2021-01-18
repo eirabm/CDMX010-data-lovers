@@ -34,11 +34,8 @@
 .favoritePokemon{
     margin-left: 33px;
     margin-top: 30px;
-    font-weight: bold;    
-}
-
-.favoritePokemon{
-    font-size: 15px;
+    font-weight: bold;   
+    font-size: 15px; 
 }
 
 .pokemonName{
@@ -76,7 +73,7 @@
 }
 
 .line{
-    margin-left: 18px;
+    margin-left: 30px;
     margin-top: 27px;
     background-color: #c4c4c4;
 }
@@ -163,6 +160,7 @@
 }
 
 .filtros{
+    margin-top: 35px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -328,9 +326,10 @@
     justify-content: space-around;    
 }
 
-.linee{
-    border: 1px solid white;    
-}
+/* .linee{
+    border: 1px solid white;  
+      
+} */
 
 .extra{
     margin-left: 177px;
@@ -419,12 +418,96 @@ nav ul li p{
     }
     ul{
         margin-bottom: 0%;
-        padding-left: 130px;
+        padding-left: 180px;
     }    
     nav.show{
         display: block;
     }
-}
+
+  /* SECCION DE ENCONTRAR EL POKEMON */
+    .search{       
+        /* display: inline-block;
+        position: relative;
+        flex-direction: column;       
+        width: 270px; */
+        align-items: stretch;
+        position: relative;  
+        display: block;
+        width: 100%;              
+    }
+    .findPokemon{
+       /* display: flex;  
+       justify-content: center; */
+       width: 100%;      
+    }
+    .favoritePokemon{
+        display: flex;
+        justify-content: center;
+    }   
+    .pokemonName{
+        display: flex;
+        justify-content: center;
+        width: 33%;
+    }
+    .flexbox{
+        margin-left: 364px;
+    }
+    .searchName{
+        display: flex;
+        justify-content: center;
+        width: 35%;
+    }
+    .line{
+        width: 100%;
+        margin: 0%;
+        margin-top: 27px;
+    }
+    /* FILTROS RESPONSIVOS */
+    .filter{
+        margin-top: 10px;
+        position:relative;
+    }
+
+    .filterList{
+        display: none;
+        align-self: center;
+    }
+
+    .filterList ul li{
+        display: inline-block;
+    }
+
+    .filterList ul li p{
+        display: inline-block;
+    }
+
+    .pokemonList{
+        position: relative;
+        width: 100%;
+        display: block;
+        margin: 5%;
+        margin-top: 0;
+    }
+
+    .filterlist{
+
+    }
+
+    #toggle:checked + .filterList{
+        display:inline-block;
+    }
+    label{
+        display: inline-block;
+    }
+
+    label span{
+        text-align: justify;
+        visibility: visible;
+        flex-direction: row;
+    }
+}  
+    
+
 
 @media(max-width: 817px){
     .toggle-btn{
