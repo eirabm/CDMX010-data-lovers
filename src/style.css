@@ -155,6 +155,11 @@ label{
     font-weight: bolder;
 }
 
+label span{
+    visibility: hidden;
+}
+
+
 #toggle{
     display: none;
 }
@@ -446,11 +451,16 @@ nav ul li p{
         display: inline-block;
     }
 
+    .filterList ul li p{
+        display: inline-block;
+    }
+
     .pokemonList{
         position: relative;
         width: 100%;
         display: block;
         margin: 5%;
+        margin-top: 0;
     }
 
     .filterlist{
@@ -458,7 +468,16 @@ nav ul li p{
     }
 
     #toggle:checked + .filterList{
-        display:block;
+        display:inline-block;
+    }
+    label{
+        display: inline-block;
+    }
+
+    label span{
+        text-align: justify;
+        visibility: visible;
+        flex-direction: row;
     }
 }
 
