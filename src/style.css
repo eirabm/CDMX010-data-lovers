@@ -90,7 +90,6 @@
     list-style: none;
     margin-top: 35px;
     width: 270px;
-    position: relative;
     margin-left: -85px;
 }
 
@@ -440,11 +439,11 @@ nav ul li p{
     .filter{
         margin-top: 10px;
         position:relative;
+        width: 100%;
     }
 
     .filterList{
         display: none;
-        align-self: center;
     }
 
     .filterList ul li{
@@ -463,21 +462,19 @@ nav ul li p{
         margin-top: 0;
     }
 
-    .filterlist{
-
-    }
 
     #toggle:checked + .filterList{
-        display:inline-block;
-    }
-    label{
         display: inline-block;
     }
 
+    label{
+        font-size: 20px;
+        display: inline-block;
+        
+    }
+
     label span{
-        text-align: justify;
         visibility: visible;
-        flex-direction: row;
     }
 }
 
