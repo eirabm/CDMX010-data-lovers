@@ -44,5 +44,4 @@ export let getpokemoncito=(filterbyType, filterbyCandy, pokemons, pokeCard)=>{
       
     return getcandy(filterbyCandy, pokemons, pokeCard)}
 }
-    
-    
+

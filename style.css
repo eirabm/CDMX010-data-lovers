@@ -28,11 +28,8 @@
 .favoritePokemon{
     margin-left: 33px;
     margin-top: 30px;
-    font-weight: bold;    
-}
-
-.favoritePokemon{
-    font-size: 15px;
+    font-weight: bold;   
+    font-size: 15px; 
 }
 
 .pokemonName{
@@ -80,7 +77,7 @@
 }
 
 .line{
-    margin-left: 18px;
+    margin-left: 30px;
     margin-top: 27px;
     background-color: #c4c4c4;
 }
@@ -178,10 +175,19 @@ label span{
 .alphabet{
     display: flex;    
 }
+.alphabet1{
+    display: flex;    
+}
 .az{
     margin: 0%;  
     font-size: 14px;
     margin-left: 6px;  
+}
+
+.filtros{
+    margin-top: 35px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .nombre{
@@ -324,9 +330,10 @@ label span{
     justify-content: space-around;    
 }
 
-.linee{
-    border: 1px solid white;    
-}
+/* .linee{
+    border: 1px solid white;  
+      
+} */
 
 .extra{
     margin-left: 177px;
@@ -412,38 +419,67 @@ nav ul li p{
     }
     ul{
         margin-bottom: 0%;
-        padding-left: 130px;
+        padding-left: 180px;
     }    
     nav.show{
         display: block;
     }
 
-    .search{
+  /* SECCION DE ENCONTRAR EL POKEMON */
+    .search{       
+        /* display: inline-block;
+        position: relative;
+        flex-direction: column;       
+        width: 270px; */
+        align-items: stretch;
         position: relative;  
         display: block;
-        width: 100%;
+        width: 100%;              
     }
-
     .findPokemon{
-        width: 100%
+       /* display: flex;  
+       justify-content: center; */
+       width: 100%;      
     }
-
+    .favoritePokemon{
+        display: flex;
+        justify-content: center;
+    }   
     .pokemonName{
-        width: 93%;
+        display: flex;
+        justify-content: center;
+        width: 33%;
     }
-
+    .flexbox{
+        margin-left: 364px;
+    }
     .searchName{
-        width: 95%
+        display: flex;
+        justify-content: center;
+        width: 35%;
     }
-
-    .filter{
-        margin-top: 10px;
-        position:relative;
+    .line{
         width: 100%;
+        margin: 0%;
+        margin-top: 27px;
+    }
+    /* FILTROS RESPONSIVOS */
+    .filter{
+        font-family: 'Heebo', sans-serif;
+        margin-top: 20px;
+        margin-left: 20px;
+        position:relative;
     }
 
     .filterList{
         display: none;
+        align-self: center;       
+    }
+
+    .filterList ul{
+        padding-left: 13px;
+        display: flex;
+        flex-direction: row;
     }
 
     .filterList ul li{
@@ -462,6 +498,36 @@ nav ul li p{
         margin-top: 0;
     }
 
+    .alphabet1{
+        margin-top: 48px;
+    }
+
+    .alpha{
+        display: flex;
+        flex-direction: column;
+    }
+    .type{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+    }
+    .tipo{
+        margin-left: 3px;
+    }
+    .type2{
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+        margin-top: 47px;
+    }
+    .filters1{
+        display: flex;
+    }
+    .filters2{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
 
     #toggle:checked + .filterList{
         display: inline-block;
@@ -476,7 +542,9 @@ nav ul li p{
     label span{
         visibility: visible;
     }
-}
+}  
+    
+
 
 
 
