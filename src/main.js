@@ -266,3 +266,14 @@ searchFilters.onclick = function(){
       
       navbar.classList.toggle("show");
    }
+
+   //query de los filtros
+
+   let desplegarFiltros = document.getElementById("menu-filter");
+
+   desplegarFiltros.onclick = function(){
+
+      var filtros = document.getElementById("filter");
+
+      filtros.classList.toggle("show");
+   }
