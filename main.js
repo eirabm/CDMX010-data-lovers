@@ -63,34 +63,32 @@ function pokeCard(pokemones){
 /*ESTILO DE LAS TARJETAS INFORMATIVAS  DE LOS POKEMONES */
 
 function pokeIndividualInfo (pokemones){
-   return `
-   <div class="individualPokeCard">
-   <div class="imgContainter">
-   <img class="pokemon" src="${pokemones.img}"/>
-   </div> 
-   <div class="cardText"> 
-      <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
-      <p class="information"> Tipo: ${pokemones.type[0]} <br>
-      Lugar de aparición: ${pokemones.generation['name']} <br>     
-      <p class = "about">${pokemones.about}</p>
-   </div>
-   <div class="extra">
-   <div class="info" style="background-color:${colors[pokemones.type[0]]}">
-    <div class="stats">         
-     <h5 class = "height"> Altura: <br> ${pokemones.size['height']} </h5> 
-     <span class="linee"></span>      
-     <h5 class = "weight"> Peso: <br> ${pokemones.size['weight']} </h5>     
-     <span class="linee"></span> 
-     <h5 class = "attack"> Estadísticas <br> de ataque: <br> ${pokemones.stats['base-attack']} </h5>  
-     <span class="linee"></span>       
-     <h5 class = "defense"> Estadísticas <br> de defensa: <br> ${pokemones.stats['base-defense']} </h5>        
-   </div>  
-   </div> 
-   </div>   
-   </div>   
-   `
-};
-
+	return `
+	<div class="individualPokeCard">
+	<div class="imgContainter">
+	<img class="pokemon" src="${pokemones.img}"/>
+	</div> 
+	<div class="cardText"> 
+	   <p class="pokename" style="background-color:${colors[pokemones.type[0]]}"> ${[pokemones.name[0].toUpperCase()+pokemones.name.slice(1)]} </p>
+	   <p class="information"> Tipo: ${pokemones.type[0]} <br>
+	   Lugar de aparición: ${pokemones.generation['name']} <br>
+	   <p class = "about">${pokemones.about}</p>
+	</div>
+	<div class="extra">
+	<div class="info" style="background-color:${colors[pokemones.type[0]]}">
+	 <div class="stats">         
+	  <h5 class = "height"> Altura: <br> ${pokemones.size['height']} </h5> 
+	  <span class="linee"></span>      
+	  <h5 class = "weight"> Peso: <br> ${pokemones.size['weight']} </h5>     
+	  <span class="linee"></span> 
+	  <h5 class = "attack"> Estadísticas <br> de ataque: <br> ${pokemones.stats['base-attack']} </h5>  
+	  <span class="linee"></span>       
+	  <h5 class = "defense"> Estadísticas <br> de defensa: <br> ${pokemones.stats['base-defense']} </h5>  
+	  <span class="linee></span>     
+	</div>   
+	</div>   
+	`
+ }    
 
 /* VER LA INFORMACIÓN GENERAL DE CADA POKEMÓN DE FORMA INDIVIDUAL*/
 
@@ -137,6 +135,8 @@ searchByName.onclick = function(){
     `
    };
 
+
+
 /*BOTON PARA BUSCAR CON LOS FILTROS*/
 
 //Definimos una variable para obtener el id del botón.
@@ -172,47 +172,30 @@ searchFilters.onclick = function(){
 	document.getElementById("steel").checked ? typesToFilter.push('steel') : '';
 	document.getElementById("water").checked ? typesToFilter.push('water') : '';
 
-   //Filtro por número de caramelos.
-   document.getElementById("twelveCandy").checked ? candyToFilter.push("12") : "";
-   document.getElementById("twentyFiveCandy").checked ? candyToFilter.push("25") : "";
-   document.getElementById("fiftyCandy").checked ? candyToFilter.push("50") : "";
-   document.getElementById("aHundredCandy").checked ? candyToFilter.push("100") : "";
-   document.getElementById("fourhundredCandy").checked ? candyToFilter.push("400") : "";
+	document.getElementById("twelveCandy").checked ? CandyToFilter.push('12') : '';
+	document.getElementById("twentyFiveCandy").checked ? CandyToFilter.push('25') : '';
+    document.getElementById("fiftyCandy").checked ? CandyToFilter.push('50') : '';
+    document.getElementById("aHundredCandy").checked ? CandyToFilter.push('100') : '';
+    document.getElementById("fourhundredCandy").checked ? CandyToFilter.push('400') : '';
 
-
-
-   // let candyTwelve= document.getElementById("twelveCandy").checked;
-   // let candyTwentyFive = document.getElementById("twentyFiveCandy").checked;
-   // let candyFifty = document.getElementById("fiftyCandy").checked;
-   // let candyAHundred = document.getElementById("aHundredCandy").checked;
-   // let candyFourHundred = document.getElementById("fourhundredCandy").checked;
-
-   /*FILTRO EN ORDEN ALFABETICO*/
-
-   //Si se encuentre check el "input", entonces el objeto se acomodará alfabeticamente gracias a "sort"
-   if (arrangeAZ == true){
-      //"sort" siempre obtendrá una función con dos parámetros, el "antes" y "despues" de la unidad. En este caso "a" y "b"
-      let sortedPokemons = pokemons.sort(function(a,b){
-         //Lo que define el acomodo del objeto son los valores que le asignamos al "return".
-         //Si el parámetro previo a la unidad del nombre es menor al parámetro subsecuente de la unidad del nombre, entonces devolverá un -1 (Comenzará en "a")
-         //Si el parámetro previo a la unidad del nombre es MAYOR al parámetro subsecuente de la unidad del nombre, entonces devolverá un 1 (Comenzará en "Z")
-         if (a.name < b.name) return -1;
-         if (a.name > b.name) return 1;
-         //Si el parámetro previo y posterior son iguales a la unidad del nombre, entonces devolverá 0.
-         return 0;
-      });
-      document.getElementById("pokemonss").innerHTML = `
-      ${sortedPokemons.map(pokeCard).join('')}
-      ` 
-   };
-
-   if (arrangeZA == true){
+	if (arrangeAZ == true){
 
 		let sortedPokemons = pokemons.sort(function(a,b){
-
-		   if (a.name < b.name) return 1;
-         if (a.name > b.name) return -1;         
-		   return 0;
+  
+			if (a.name < b.name) return -1;
+			if (a.name > b.name) return 1;
+			return 0;
+		});
+		document.getElementById("pokemonss").innerHTML = `
+		${sortedPokemons.map(pokeCard).join('')}
+		` 
+	}
+  
+	if (arrangeZA == true){
+		let sortedPokemons = pokemons.sort(function(a,b){
+			if (a.name < b.name) return 1;
+			if (a.name > b.name) return -1;
+			return 0;
 		});
   
 		document.getElementById("pokemonss").innerHTML = `
@@ -227,7 +210,7 @@ searchFilters.onclick = function(){
    let uniqueTypeFilters = [...new Set(typesToFilter)];
 
    /*FILTRAR POR EL NÚMERO DE CARAMELOS QUE NECESITA CADA POKEMON PARA EVOLUCIONAR */	
-	let uniqueCandyFilters = [...new Set(candyToFilter)];
+	let uniqueCandyFilters = [...new Set(CandyToFilter)];
 
    // Aqui estamos imprimiendo la función de getpokemoncito(que se encuentra en data), en relación a "uniquefilters (let definida con los pokemons)", "pokemons (const de los pokemones)" y "pokecard (diseño de las tarjetas)"
    console.log (getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard));
@@ -245,7 +228,7 @@ searchFilters.onclick = function(){
 	    }else{
 		document.getElementById("pokemonss").innerHTML = filteredMappedPokemons
        }   
-};
+}
 
    //Refrescar la pantalla
    let refrescar = document.getElementById("regresar");
@@ -254,7 +237,7 @@ searchFilters.onclick = function(){
     document.getElementById("pokemonss").innerHTML = `
     ${pokemons.map(pokeCard).join('')}
     `  
-   };
+   }
 
    //query del navbar
 
@@ -265,15 +248,4 @@ searchFilters.onclick = function(){
       var navbar = document.getElementById("nav");
       
       navbar.classList.toggle("show");
-   }
-
-   //query de los filtros
-
-   let desplegarFiltros = document.getElementById("menu-filter");
-
-   desplegarFiltros.onclick = function(){
-
-      var filtros = document.getElementById("filter");
-
-      filtros.classList.toggle("show");
    }
