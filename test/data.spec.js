@@ -1,7 +1,7 @@
 import { getpokemoncito, anotherExample } from '../src/data.js';
 
 
-describe('example', () => {
+describe('el pokemon a regresar debe ser Pikachu', () => {
   it.skip('is a function', () => {
     expect(typeof getpokemoncito).toBe('function');
   });
