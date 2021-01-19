@@ -22,7 +22,7 @@
 }
 
 .findPokemon{
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Heebo', sans-serif;    
 }
 
 .flexbox{
@@ -428,6 +428,8 @@ nav ul li p{
     
 }
 
+
+
 /* Media Querys del Navbar*/
 
 @media(max-width: 991px){
@@ -457,15 +459,17 @@ nav ul li p{
         /* display: inline-block;
         position: relative;
         flex-direction: column;       
-        width: 270px; */
-        align-items: stretch;
-        position: relative;  
+        width: 270px; */        
+        align-items: center;        
+        position: relative;
         display: block;
         width: 100%;              
     }
 
-    .findPokemon{     
-       width: 100%;      
+    .findPokemon{    
+        display: flex 
+        justify-content
+        width 100%;      
     }
 
     .favoritePokemon{
@@ -474,7 +478,7 @@ nav ul li p{
     }   
 
     .pokemonName{
-        display: flex;
+        display: flex;        
         justify-content: center;
         width: 33%;
     }
@@ -484,7 +488,7 @@ nav ul li p{
     }
 
     .searchName{
-        display: flex;
+        display: flex;        
         justify-content: center;
         width: 35%;
     }
@@ -604,6 +608,83 @@ nav ul li p{
     }
 }
 
+/* BUSQUEDA DE POKEMÓN POR NOMBRE */
+@media(min-width: 970px) and (max-width: 980px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 34%;
+        margin-left: 27px;
+    }
+
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 36%;
+        margin-left: 27px;
+    }
+}
+/* @media(max-width: 972px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 32%;
+    }
+
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 34%;
+    }
+}
+@media(max-width: 976px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 33%;
+        margin-left: 32px;
+    }
+
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 35%;
+        margin-left: 32px;
+    }
+}
+@media(max-width: 955px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 35%;
+        margin-left: 19px;
+    }
+
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 37%;
+        margin-left: 19px;
+    }      
+}
+@media(max-width: 931px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 35%;
+        margin-left: 10px;
+    }
+
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 36%;
+        margin-left: 10px;
+    }
+} */
+
+/* NOMRAL */
+
 @media(max-width: 817px){
 
     .toggle-btn{
@@ -630,14 +711,22 @@ nav ul li p{
     .flexbox{
         margin-left: 279px;
     }
+    .findPokemon{     
+        justify-content: center;
+        width: 100%;      
+    }
 
-    .pokemonName{        
+    /* .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
         width: 39%;
     }
 
     .searchName{
+        display: flex;        
+        justify-content: center;
         width: 41%;
-    }
+    } */
 }
 
 @media(max-width: 769px){

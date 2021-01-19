@@ -13,8 +13,6 @@ let getcandy = (filterby, pokemons, pokeCard) => {
   return candyMappedPokemons;
 };
 
-
-
 export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) => {
   //Si tenemos un input de "type" seleccionado.
   if (filterbyType.length > 0) {
@@ -41,6 +39,5 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) =>
     }
     //Si solo tenemos input "candy" seleccionados
   } else if (filterbyCandy.length > 0) {      
-    return getcandy (filterbyCandy, pokemons, pokeCard)};
-};
-
+    return getcandy (filterbyCandy, pokemons, pokeCard)}
+}

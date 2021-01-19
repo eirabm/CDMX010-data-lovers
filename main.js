@@ -30,7 +30,7 @@ function getAPokemon (e) {
 		
 		document.getElementById("pokemonss").innerHTML = getThisPokemon.map(pokeIndividualInfo).join('');		
 	}   
-};
+}
 
 /*BUSCAR POR EL NOMBRE INDIVIDUAL DE POKEMÓN*/
 
@@ -54,8 +54,8 @@ searchFilters.onclick = function () {
 	candyToFilter.length = 0;
   
 	//Orden alfabético.
-  	let arrangeAZ = document.getElementById("az").checked;
-   	let arrangeZA = document.getElementById("za").checked;
+let arrangeAZ = document.getElementById("az").checked;
+let arrangeZA = document.getElementById("za").checked;
    
     //Tipo de Pokemón.
 	let typeCheckboxes = document.getElementsByName ("tFilter");
@@ -65,8 +65,7 @@ searchFilters.onclick = function () {
 			// ************************************************** PORQUE ID?
 			typesToFilter.push(typeCheckboxes[i].id); 
 		}
-	};
-
+	}
 	//Número de dulces.
 	let candyCheckboxes = document.getElementsByName ("cFilter");
 
@@ -84,11 +83,10 @@ searchFilters.onclick = function () {
 			if (a.name < b.name) return -1;
 			if (a.name > b.name) return 1;
 			return 0;
-		});
+		});		
 
-		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join(''); 
-	};
-  
+		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('');		
+	}
 	if (arrangeZA == true){
 
 		let sortedPokemons = pokemons.sort(function(a,b){
@@ -99,18 +97,23 @@ searchFilters.onclick = function () {
 		});
   
 		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join(''); 
-	};
+	}
 
    //Obtener el arreglo de los tipos de pokemones ya filtrados 
    // Los 3 puntos indican que estamos obteniendo los Pokemones que se guardaron en la constante "typesToFilter" y de todos los pokemones, se hace un "new set" del arreglo que corresponda a los filtros según el tipo que seleccionamos
    // Nota 1. Con "new" estamos indicando que vamos a crear un nuevo arreglo de los Pokemones ya filtrados en "typesTofIlter"
    // Nota 2. Con "set" nos aseguramos que no se repitan Pokemones, si es que se presiona 2 veces el botón buscar.
    /*eslint no-undef: "error"*/
-    let uniqueTypeFilters = [...new Set(typesToFilter)];   
-	let uniqueCandyFilters = [...new Set(candyToFilter)];
-
-    //Imprimimos toda la información ya filtrada.
-	document.getElementById("pokemonss").innerHTML = getpokemoncito (uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard);  
+    let uniqueTypeFilters = [...new Set(typesToFilter)]; // eslint-disable-line 
+	let uniqueCandyFilters = [...new Set(candyToFilter)]; // eslint-disable-line 
+	
+	//Se muestren los pokemones filtrados si no se seecionó tipo y caramelos.
+	if (uniqueTypeFilters.length == 0 && uniqueCandyFilters.length == 0) {
+		return
+	} else {
+		//Imprimimos toda la información ya filtrada.
+		document.getElementById("pokemonss").innerHTML = getpokemoncito (uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard);
+	}    
 };
 
 /* BOTÓN ATRAS DE LA PANTALLA PRINCIPAL */
