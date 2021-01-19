@@ -1,30 +1,36 @@
+  
 .name{
     width: 100%;
     max-width: 200px; 
     margin-top: 10px;  
     margin-left: 42px;  
 }
+
 .user{
     width: 100%;
     max-width: 30px; 
 }
+
 .car{
     width: 100%;
     max-width: 30px; 
 }
+
 .endNavbar{
     background-color: #c4c4c4;
     width: 100%;
-    position: absolute;
-   
+    position: absolute;   
 }
+
 .findPokemon{
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Heebo', sans-serif;    
 }
+
 .flexbox{
     display: flex;
     flex-direction: column;
 }
+
 .favoritePokemon{
     margin-left: 33px;
     margin-top: 30px;
@@ -41,6 +47,7 @@
     border:1px #B4B2B2 solid;
     outline: none;  
 }
+
 .searchName{
     margin-left: 33px;
     border-radius: 6px;
@@ -53,9 +60,11 @@
     border: 2px #0E918C solid;
     color: white
 }
+
 .searchName:hover{
     cursor: pointer;
 }
+
 .search{   
     display: flex;
     flex-direction: row; 
@@ -144,20 +153,19 @@
     flex-direction: row;
 }
 
-
 label{
     margin-left: 35px;
     font-size: 18px;
     font-weight: bolder;
+    font-size: 15px; 
 }
 
 label span{
     visibility: hidden;
 }
 
-
 #toggle{
-    display: none;
+    display: none;   
 }
 
 .searchFilter:hover{
@@ -223,7 +231,9 @@ label span{
     padding-bottom: 13px;
     font-size: 25px;
 }
+
 /*Esta parte da formato a las fichas del pokemon */
+
 .pokemonss{
     display: flex;
     flex-wrap: wrap;
@@ -232,6 +242,7 @@ label span{
     margin-left: 50px;
     max-width: 1200px;
 }
+
 .pokemonCard {
 	background-color: #eee;
 	border-radius: 20px;
@@ -240,6 +251,7 @@ label span{
 	padding: 20px;
 	text-align: center;
 }
+
 .pokemonCard .imgContainer {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
@@ -247,29 +259,36 @@ label span{
 	height: 120px;
 	text-align: center;
 }
+
 .pokemonCard .imgContainer img {
 	margin-top: 20px;
 	max-width: 90%;
 }
+
 .pokemonCard .info {
 	margin-top: 10px;
 }
+
 .pokemonCard .number {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 	font-size: 0.8em;
 	padding: 5px 10px;
 }
+
 .pokemonCard .name {
 	margin: 15px 0 7px;
 	letter-spacing: 1px;
 }
-/*Esta parte es el formato de la info de un pokemon*/
+
+/*Esta parte es el formato de la info general de un pokemon*/
+
 .individualPokeCard{
     display: flex;
     margin: 0 auto;
     max-width: 1200px;
 }
+
 .individualPokeCard .imgContainer {
     background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
@@ -277,10 +296,12 @@ label span{
 	height: 500px;
 	text-align: center;
 }
+
 .individualPokeCard .imgContainer img {
 	margin-top: 200px;
 	max-width: 90%;
 }
+
 .individualPokeCard .info {
     background-color: #eee;
 	border-radius: 20px;
@@ -290,12 +311,13 @@ label span{
 	text-align: center;
 }
 
-/* ESTILOS DE LA TARJETA INFORMATIVA DE LOS POKEMONS */
+/* Estilos de la tarjeta informativa de cada pokemón */
 
 .individualPokeCard{
     display: flex;
     flex-direction: column;
 }
+
 .imgContainter{
     display: flex;
     justify-content: center;
@@ -315,36 +337,36 @@ label span{
     flex-direction: column;
     text-align: justify;   
 }
+
 .information{
     margin-left: 189px;
     font-size: 15px;
 }
+
 .typeCard{
     color: #838383;
     padding-top: 0%;
     margin-top: 0%;
 }
+
 .stats{
     display: flex;
     flex-direction: row;
     justify-content: space-around;    
 }
 
-/* .linee{
-    border: 1px solid white;  
-      
-} */
-
 .extra{
     margin-left: 177px;
     margin-right: 175px;
 }
+
 .about{
     margin-left: 189px;
     margin-right: 189px;
     text-align: justify;
     font-size: 15px;
 }
+
 .pokename{
     font-size: 26px;
     margin-bottom: unset;
@@ -357,8 +379,7 @@ label span{
     box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
 }
 
-/* ESTILO DEL NAVBAR RESPONSIVE */
-
+/* Estilo del navbar responsive */
 
 header{
     display: inline-block;
@@ -375,6 +396,7 @@ nav{
     font-family: 'Barlow', sans-serif;
     font-weight: bold; 
 }
+
 nav ul{
     margin-top: 0%;
 }
@@ -393,7 +415,7 @@ nav ul li p{
     width: 35px;
     position: absolute;
     right: 50px;
-    top: 30px;
+    top: 30px;    
     display: none;
 }
 
@@ -403,72 +425,88 @@ nav ul li p{
     height: 2px;
     background-color: black;    
     margin-bottom: 8px;
+    font-size: 15px; 
     
 }
 
-/* MEDIA QUERYS DEL NAVBAR */
+
+
+/* Media Querys del Navbar*/
 
 @media(max-width: 991px){
+
     .toggle-btn{
         display: block;
     }
+
     nav{
         display: none;
         width: 100%;
         border-top: 1px solid #000;       
     }
+
     ul{
         margin-bottom: 0%;
         padding-left: 180px;
-    }    
+    }  
+
     nav.show{
         display: block;
     }
 
-  /* SECCION DE ENCONTRAR EL POKEMON */
+  /* Sección de encontrar el Pokemón por nombre */
+
     .search{       
         /* display: inline-block;
         position: relative;
         flex-direction: column;       
-        width: 270px; */
-        align-items: stretch;
-        position: relative;  
+        width: 270px; */        
+        align-items: center;        
+        position: relative;
         display: block;
         width: 100%;              
     }
-    .findPokemon{
-       /* display: flex;  
-       justify-content: center; */
-       width: 100%;      
+
+    .findPokemon{    
+        display: flex 
+        justify-content
+        width 100%;      
     }
+
     .favoritePokemon{
         display: flex;
         justify-content: center;
     }   
+
     .pokemonName{
-        display: flex;
+        display: flex;        
         justify-content: center;
         width: 33%;
     }
+
     .flexbox{
         margin-left: 364px;
     }
+
     .searchName{
-        display: flex;
+        display: flex;        
         justify-content: center;
         width: 35%;
     }
+
     .line{
         width: 100%;
         margin: 0%;
         margin-top: 27px;
     }
-    /* FILTROS RESPONSIVOS */
+
+    /* Filtros responsivos */
+
     .filter{
         font-family: 'Heebo', sans-serif;
-        margin-top: 20px;
-        margin-left: 20px;
+        margin-top: 20px;        
         position:relative;
+        width: 100%;
     }
 
     .filterList{
@@ -506,35 +544,62 @@ nav ul li p{
         display: flex;
         flex-direction: column;
     }
+
     .type{
         display: flex;
         flex-direction: column;
         margin-left: 25px;
     }
+
     .tipo{
         margin-left: 3px;
     }
+
     .type2{
         display: flex;
         flex-direction: column;
         margin-left: 15px;
         margin-top: 47px;
     }
+
     .filters1{
-        display: flex;
+        display: flex;       
     }
+
     .filters2{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        margin-left: 15px;
     }
-    
+
+    .numCandy{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .filtCandy{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filtCandy2{
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+    }
+
+    .lastCandies{
+        margin-left: 15px;
+    }
+   
+    /* Botón de filtros con flecha */
 
     #toggle:checked + .filterList{
         display: inline-block;
     }
 
     label{
-        font-size: 20px;
+        font-size: 15px;
         display: inline-block;
         
     }
@@ -542,41 +607,136 @@ nav ul li p{
     label span{
         visibility: visible;
     }
-}  
-    
+}
 
+/* BUSQUEDA DE POKEMÓN POR NOMBRE */
+@media(min-width: 970px) and (max-width: 980px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 34%;
+        margin-left: 27px;
+    }
 
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 36%;
+        margin-left: 27px;
+    }
+}
+/* @media(max-width: 972px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 32%;
+    }
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 34%;
+    }
+}
+@media(max-width: 976px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 33%;
+        margin-left: 32px;
+    }
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 35%;
+        margin-left: 32px;
+    }
+}
+@media(max-width: 955px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 35%;
+        margin-left: 19px;
+    }
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 37%;
+        margin-left: 19px;
+    }      
+}
+@media(max-width: 931px){
+    .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 35%;
+        margin-left: 10px;
+    }
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 36%;
+        margin-left: 10px;
+    }
+} */
 
+/* NOMRAL */
 
 @media(max-width: 817px){
+
     .toggle-btn{
         display: block;
     }
+
     nav{
         display: none;
         width: 100%;
         border-top: 1px solid #000;        
     }
+
     ul{
         margin-bottom: 0%;
         padding-left: 80px;
-    }   
+    }  
+
     nav.show{
         display: block;
     }
 
+    /* Sección para encontrar al pokemón por su nombre */
 
+    .flexbox{
+        margin-left: 279px;
+    }
+    .findPokemon{     
+        justify-content: center;
+        width: 100%;      
+    }
+
+    /* .pokemonName{ 
+        display: flex;        
+        justify-content: center;       
+        width: 39%;
+    }
+    .searchName{
+        display: flex;        
+        justify-content: center;
+        width: 41%;
+    } */
 }
 
 @media(max-width: 769px){
+
     .toggle-btn{
         display: block;
     }
+
     nav{
         display: none;
         width: 100%;
         border-top: 1px solid #000;      
     }
+
     ul{
         margin-bottom: 0%;
         padding-left: 40px;
@@ -590,18 +750,22 @@ nav ul li p{
 }
 
 @media(max-width: 728px){
+
     .toggle-btn{
         display: block;
     }
+
     nav{
         display: none;
         width: 100%;
         border-top: 1px solid #000;        
     }
+
     ul{
         margin-bottom: 0%;
         padding-left: 30px;
     }    
+
     nav.show{
         display: block;
     }

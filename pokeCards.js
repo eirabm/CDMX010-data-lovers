@@ -1,3 +1,4 @@
+//Colores de las tarjetas según el tipo de pokemón.
 const colors = {
 	fire: '#FDDFDF',
 	grass: '#b4ecb4',
@@ -17,11 +18,12 @@ const colors = {
    steel: '#EDEAE4',
    dark: '#8A8985',
    ghost: '#E0BBE4'
-}
+};
 
-export let pokeCard=(pokemones)=>{
+//Estilo de las tarjetas principales de los pokemones.
+export let pokeCard = (pokemones) => {
     return `
-    <div class="pokemonCard" id= "${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
+    <div class="pokemonCard" id= "${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
     <div class="imgContainer">
     <img src="${pokemones.img}"/> </div>
     <div class="info">
@@ -30,9 +32,10 @@ export let pokeCard=(pokemones)=>{
     <small class="type"> Tipo: <span>${pokemones.type[0]} </span></small>
     </div>
     </div>`
-}
+};
 
-export let pokeIndividualInfo=(pokemones)=>{
+//Estilo de las tarjetas informativas individuales de cada pokemón.
+export let pokeIndividualInfo = (pokemones) => {
 	return `
 	<div class="individualPokeCard">
 	<div class="imgContainter">
@@ -58,4 +61,4 @@ export let pokeIndividualInfo=(pokemones)=>{
 	</div>   
 	</div>   
 	`
- } 
+};    
