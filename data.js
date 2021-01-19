@@ -1,5 +1,3 @@
-// EN ESTA SECCIÓN SE FILTRA LA INFORMACIÓN.
-
 let getcandy = (filterby, pokemons, pokeCard)=>{
   
     let pokemonsWithEvolution = pokemons.filter((filtro)=> filtro.evolution['next-evolution'])

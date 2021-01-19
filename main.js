@@ -68,7 +68,8 @@ searchFilters.onclick = function(){
 			if (a.name < b.name) return -1;
 			if (a.name > b.name) return 1;
 			return 0;
-		});
+		})
+
 		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('') 
 	}
   
