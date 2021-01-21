@@ -1,26 +1,22 @@
-let getcandy = (filterby, pokemons, pokeCard) => {
+let getcandy = (filterby, pokemons)=>{
   
   let pokemonsWithEvolution = pokemons.filter ((filtro) => filtro.evolution['next-evolution']);
 
   let filterCandy = filterby.map ((filtro) => pokemonsWithEvolution.filter ((pokemon) => 
   pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro));
 
-  let candyMappedPokemons = filterCandy.map ((poke) => poke.map(pokeCard).join(''));
-
-  return candyMappedPokemons;
+  console.log(filterCandy)
+  return filterCandy
 };
 
-export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) => {
-
+export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
   if (filterbyType.length > 0) {
 
     let filteredType = filterbyType.map ((filtro) => pokemons.filter ((pokemon) => pokemon.type[0] === filtro));
 
-    let mappedPokemons = filteredType.map ((poke) => poke.map (pokeCard).join('')).join('');
-
         if (filterbyCandy.length == 0) {
 
-          return mappedPokemons
+          return filteredType
 
         }else if (filterbyCandy.length > 0 ){
 
@@ -29,17 +25,40 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) =>
           let filterCandy = filterbyCandy.map((filtro)=> pokemonsWithEvolution.map((pokeEvoCandy) => pokeEvoCandy.filter((pokemon) => 
           pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro)))
           
-          let candyMappedPokemons = filterCandy.map((mapCandy) => mapCandy.map((poke) => poke.map(pokeCard).join('')).join(''))
-
-          return candyMappedPokemons
+          return filterCandy
         }
   }else if (filterbyCandy.length > 0) {    
       
-    return getcandy (filterbyCandy, pokemons, pokeCard)}
+    return getcandy(filterbyCandy, pokemons)}
 
 }
 
-export let sumar=(a,b)=>{
-  let result=a+b;
-  return result;
+export let searchName = (pokemons) =>{
+  let nameToSearch = document.getElementById ("nameToSearch").value.toLowerCase();  
+  let foundName = pokemons.filter ((filterName) => filterName.name == nameToSearch);
+
+  return foundName
 }
+
+export let filterAZ = (pokemons)=>{
+  let sortedPokemons = pokemons.sort (function (a,b) { 
+
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  })
+  
+  return sortedPokemons
+}
+
+export let filterZA = (pokemons) =>{
+  let sortedPokemons = pokemons.sort (function (a,b) { 
+
+    if (a.name < b.name) return 1;
+    if (a.name > b.name) return -1;
+    return 0;
+  })
+  
+  return sortedPokemons
+}
+
