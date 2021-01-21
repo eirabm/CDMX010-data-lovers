@@ -31,7 +31,9 @@ function getAPokemon (e) {
 
 let searchByName = document.getElementById ("searchName");
 searchByName.onclick = function () {
-    let filteredPokemon = searchName(pokemons)
+	let nameToSearch = document.getElementById ("nameToSearch").value.toLowerCase(); 
+
+    let filteredPokemon = searchName(pokemons, nameToSearch)
     document.getElementById("pokemonss").innerHTML = filteredPokemon.map(pokeIndividualInfo).join('');
 }
 

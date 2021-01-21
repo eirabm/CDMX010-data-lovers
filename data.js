@@ -33,10 +33,10 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 
 }
 
-export let searchName = (pokemons) =>{
-  let nameToSearch = document.getElementById ("nameToSearch").value.toLowerCase();  
+export let searchName = (pokemons, nameToSearch) =>{
   let foundName = pokemons.filter ((filterName) => filterName.name == nameToSearch);
 
+  console.log(foundName)
   return foundName
 }
 
