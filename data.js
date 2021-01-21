@@ -1,4 +1,4 @@
-let getcandy = (filterby, pokemons, pokeCard)=>{
+let getcandy = (filterby, pokemons, pokeCard) => {
   
   let pokemonsWithEvolution = pokemons.filter ((filtro) => filtro.evolution['next-evolution']);
 
@@ -11,6 +11,7 @@ let getcandy = (filterby, pokemons, pokeCard)=>{
 };
 
 export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) => {
+
   if (filterbyType.length > 0) {
 
     let filteredType = filterbyType.map ((filtro) => pokemons.filter ((pokemon) => pokemon.type[0] === filtro));
@@ -32,9 +33,9 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons, pokeCard) =>
 
           return candyMappedPokemons
         }
-  }else if(filterbyCandy.length > 0) {
+  }else if (filterbyCandy.length > 0) {    
       
-    return getcandy(filterbyCandy, pokemons, pokeCard)}
+    return getcandy (filterbyCandy, pokemons, pokeCard)}
 
 }
 
