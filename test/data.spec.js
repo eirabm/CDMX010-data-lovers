@@ -1,23 +1,70 @@
-import { getpokemoncito, anotherExample } from '../src/data.js';
+import {filterAZ, filterZA, getpokemoncito} from '../src/data.js';
+
+let mock= [{
+     "num": "223",
+     "name": "remoraid",
+     "type": [
+      "water"
+    ],
+    "evolution": {
+      "candy": "remoraid candy",
+      "next-evolution": [{
+        "num": "224",
+        "name": "octillery",
+        "candy-cost": "50"
+      }]
+    }},
+
+    {"num": "093",
+    "name": "haunter",
+    "type": [
+      "ghost",
+      "poison"
+    ],
+    "evolution": {
+      "candy": "gastly candy",
+      "next-evolution": [{
+        "num": "094",
+        "name": "gengar",
+        "candy-cost": "100"
+      }]
+    }}
+
+  ]
+    
 
 
-describe('el pokemon a regresar debe ser Pikachu', () => {
-  it.skip('is a function', () => {
-    expect(typeof getpokemoncito).toBe('function');
+describe('esta prueba es para checar el funcionamiento de los filtros por tipo y dulces', () => {
+  it('con el tipo y dulce definido el pokemon debe ser un objeto conteniendo a remoraid', () => {
+    expect(getpokemoncito(['water'], ['50'] , mock)).toEqual(expect.arrayContaining([
+      expect.arrayContaining([
+        expect.arrayContaining([
+          expect.objectContaining({
+            "name" : "remoraid"
+          })
+        ])
+      ])
+    ]))
   });
 
-  it.skip('returns `example`', () => {
-    expect(getpokemoncito()).toBe('example');
+  it('con el tipo definido el pokemon debe ser un objeto conteniendo a haunter', () => {
+    expect(getpokemoncito(['ghost'], [] , mock)).toEqual(expect.arrayContaining([
+      expect.arrayContaining([
+          expect.objectContaining({
+            "name" : "haunter"
+          })
+        ])
+    ]))
   });
 });
 
 
-describe('anotherExample', () => {
-  it.skip('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
+describe('esta prueba checa el funcionamiento de la funcion sort', () => {
+  it('se organizan alfabeticamente de A-Z', () => {
+    expect(filterAZ(mock)).toEqual(expect.arrayContaining([expect.objectContaining({"name" : "haunter"}), expect.objectContaining({"name" : "remoraid"})]));
   });
 
-  it.skip('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
+  it('se organizan alfabeticamente Z-A', () => {
+    expect(filterZA(mock)).toEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
   });
 });

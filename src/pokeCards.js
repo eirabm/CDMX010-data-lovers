@@ -23,7 +23,7 @@ const colors = {
 //Estilo de las tarjetas principales de los pokemones.
 export let pokeCard = (pokemones) => {
     return `
-    <div class="pokemonCard" id= "${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer" onclick= "getPokemon()">
+    <div class="pokemonCard" id= "${pokemones.num}" style="background-color:${colors[pokemones.type[0]]}; cursor: pointer">
     <div class="imgContainer">
     <img src="${pokemones.img}"/> </div>
     <div class="info">
