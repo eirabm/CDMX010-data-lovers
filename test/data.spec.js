@@ -1,5 +1,5 @@
+import { TestScheduler } from 'jest';
 import { getpokemoncito, anotherExample } from '../src/data.js';
-
 
 describe('el pokemon a regresar debe ser Pikachu', () => {
   it.skip('is a function', () => {

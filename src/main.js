@@ -34,7 +34,7 @@ function getAPokemon (e) {
 
 /*BUSCAR POR EL NOMBRE INDIVIDUAL DE POKEMÓN*/
 
-let searchByName = document.getElementById ("searchName");
+export let searchByName = document.getElementById ("searchName");
 
 searchByName.onclick = function () {
     //la busqueda se escribirá en minuscula gracias a "toLowerCase" para que coincida con la información del array.
