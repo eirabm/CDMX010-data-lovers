@@ -31,7 +31,9 @@ function getAPokemon (e) {
 
 let searchByName = document.getElementById ("searchName");
 searchByName.onclick = function () {
-    let filteredPokemon = searchName(pokemons)
+	let nameToSearch = document.getElementById ("nameToSearch").value.toLowerCase(); 
+
+    let filteredPokemon = searchName(pokemons, nameToSearch)
     document.getElementById("pokemonss").innerHTML = filteredPokemon.map(pokeIndividualInfo).join('');
 }
 
@@ -77,7 +79,7 @@ let arrangeZA = document.getElementById("za").checked;
 	let uniqueTypeFilters = [...new Set(typesToFilter)]		//eslint-disable-line 
 	let uniqueCandyFilters = [...new Set(candyToFilter)]	//eslint-disable-line 
 
-	let filteredPokemons = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons, pokeCard)
+	let filteredPokemons = getpokemoncito(uniqueTypeFilters, uniqueCandyFilters, pokemons)
 
 
 	if(uniqueTypeFilters.length == 0 && uniqueCandyFilters.length == 0){
