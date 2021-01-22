@@ -89,6 +89,7 @@ describe('esta prueba checa el buscador por nombre del pokemons', () =>{
 
 describe('esta prueba checa el funcionamiento de la funcion sort', () => {
   it('se organizan alfabeticamente de A-Z', () => {
+<<<<<<< HEAD
     expect(filterAZ(mock)).toEqual(expect.arrayContaining[(
       expect.objectContaining(
         expect.objectContaining(
@@ -97,9 +98,13 @@ describe('esta prueba checa el funcionamiento de la funcion sort', () => {
        )
     ))])
   })
+=======
+    expect(filterAZ(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
+  });
+>>>>>>> 084318c9add03fe08a2caff0218185c15be8e5c1
 
   it('se organizan alfabeticamente Z-A', () => {
-    expect(filterZA(mock)).toEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
+    expect(filterZA(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
   });
 });
 
