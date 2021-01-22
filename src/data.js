@@ -1,10 +1,10 @@
+//Filtrar cuando se buscan solo los dules de pos pokemones.
 let getcandy = (filterby, pokemons)=>{
   
   let pokemonsWithEvolution = pokemons.filter ((filtro) => filtro.evolution['next-evolution']);
 
   let filterCandy = filterby.map ((filtro) => pokemonsWithEvolution.filter ((pokemon) => 
   pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro));
-
   return filterCandy
 };
 
@@ -26,7 +26,7 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
           
           return filterCandy
         }
-  }else if(filterbyCandy.length > 0) {
+  }else if (filterbyCandy.length > 0) {    
       
     return getcandy(filterbyCandy, pokemons)}
 
@@ -34,7 +34,6 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 
 export let searchName = (pokemons, nameToSearch) =>{
   let foundName = pokemons.filter ((filterName) => filterName.name == nameToSearch);
-
   return foundName
 }
 
@@ -45,7 +44,7 @@ export let filterAZ = (pokemons)=>{
     if (a.name > b.name) return 1;
     return 0;
   })
-  
+  console.log(sortedPokemons)
   return sortedPokemons
 }
 

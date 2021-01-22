@@ -62,7 +62,7 @@ let arrangeZA = document.getElementById("za").checked;
 	for (let i=0; i<candyCheckboxes.length; i++) {
 		if (candyCheckboxes[i].checked){
 			candyToFilter.push(candyCheckboxes[i].id);
-		}
+		}		
 	}
 
 	//Filtrar por orden alfabético.
