@@ -5,7 +5,6 @@ let getcandy = (filterby, pokemons)=>{
   let filterCandy = filterby.map ((filtro) => pokemonsWithEvolution.filter ((pokemon) => 
   pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro));
 
-  console.log(filterCandy)
   return filterCandy
 };
 
@@ -36,7 +35,6 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 export let searchName = (pokemons, nameToSearch) =>{
   let foundName = pokemons.filter ((filterName) => filterName.name == nameToSearch);
 
-  console.log(foundName)
   return foundName
 }
 
