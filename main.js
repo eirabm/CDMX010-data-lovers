@@ -2,7 +2,7 @@
 
 import {filterAZ, filterZA, getpokemoncito, searchName} from './data.js';
 import {pokeCard, pokeIndividualInfo} from './pokeCards.js'
-import data from './data/pokemon/pokemon.js';
+import data from './src/pokemon/pokemon.js';
 
 const poks = data;
 const pokemons = poks.pokemon;
