@@ -1,50 +1,8 @@
 import {filterAZ, filterZA, getpokemoncito, searchName} from '../src/data.js';
+import {mock} from './helpers.js'
 
-let mock= [{
-     "num": "223",
-     "name": "remoraid",
-     "type": [
-      "water"
-    ],
-    "evolution": {
-      "candy": "remoraid candy",
-      "next-evolution": [{
-        "num": "224",
-        "name": "octillery",
-        "candy-cost": "50"
-      }]
-    }},
 
-    {"num": "093",
-    "name": "haunter",
-    "type": [
-      "ghost",
-      "poison"
-    ],
-    "evolution": {
-      "candy": "gastly candy",
-      "next-evolution": [{
-        "num": "094",
-        "name": "gengar",
-        "candy-cost": "100"
-      }]
-    }},
-    {
-      "num": "001",
-      "name": "bulbasaur",
-      "type": [
-        "grass",
-      ],
-      "evolution":{
-        "candy": "bulbasaur candy",
-        "next-evolution": [{
-        "num": "002",
-        "name": "ivysaur",
-        "candy-cost": "25",
-      }]   
-    }}
-]
-    
+    //mock ordenado (con los datos ordenados)
 
 
 describe('esta prueba es para checar el funcionamiento de los filtros por tipo y dulces', () => {
@@ -89,19 +47,9 @@ describe('esta prueba checa el buscador por nombre del pokemons', () =>{
 
 describe('esta prueba checa el funcionamiento de la funcion sort', () => {
   it('se organizan alfabeticamente de A-Z', () => {
-<<<<<<< HEAD
-    expect(filterAZ(mock)).toEqual(expect.arrayContaining[(
-      expect.objectContaining(
-        expect.objectContaining(
-          expect.objectContaining(
-        )
-       )
-    ))])
-  })
-=======
     expect(filterAZ(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
+    //expect(filterAZ(mock)).toBe(aqui van los datos odernados en una variable))
   });
->>>>>>> 084318c9add03fe08a2caff0218185c15be8e5c1
 
   it('se organizan alfabeticamente Z-A', () => {
     expect(filterZA(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
