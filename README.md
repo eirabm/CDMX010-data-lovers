@@ -27,7 +27,7 @@ Pensando en todos los usuarios de Pokemón Go que les gusta capturar a los perso
 
 ## Proceso
 
-![](/src/imagenes/proceso.png)
+![process](https://user-images.githubusercontent.com/66543426/105534396-0eac3400-5cb3-11eb-9653-0ca28e5aeb90.PNG)
 
 ## Usabilidad
 
