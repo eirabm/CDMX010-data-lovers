@@ -1,8 +1,7 @@
 import {filterAZ, filterZA, getpokemoncito, searchName} from '../src/data.js';
-import {mock} from './helpers.js'
+import {mock, mockOrdenByAZ} from './helpers.js'
 
 
-    //mock ordenado (con los datos ordenados)
 
 
 describe('esta prueba es para checar el funcionamiento de los filtros por tipo y dulces', () => {
@@ -47,21 +46,10 @@ describe('esta prueba checa el buscador por nombre del pokemons', () =>{
 
 describe('esta prueba checa el funcionamiento de la funcion sort', () => {
   it('se organizan alfabeticamente de A-Z', () => {
-    expect(filterAZ(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
-    //expect(filterAZ(mock)).toBe(aqui van los datos odernados en una variable))
+   expect(filterAZ(mock)).toStrictEqual(mockOrdenByAZ);
   });
 
   it('se organizan alfabeticamente Z-A', () => {
-    expect(filterZA(mock)).toStrictEqual(expect.arrayContaining([expect.objectContaining({"name" : "remoraid"}), expect.objectContaining({"name" : "haunter"})]));
+    expect(filterZA(mock)).toStrictEqual(mockOrdenByAZ);
   });
 });
-
-[{"evolution": {"candy": "bulbasaur candy", "next-evolution":
- [{"candy-cost": "25", "name": "ivysaur", "num": "002"}]}, 
- "name": "bulbasaur", "num": "001", "type": ["grass"]}, 
- {"evolution": {"candy": "gastly candy", "next-evolution":
-  [{"candy-cost": "100", "name": "gengar", "num": "094"}]}, 
-  "name": "haunter", "num": "093", "type": ["ghost", "poison"]},
-   {"evolution": {"candy": "remoraid candy", "next-evolution":
-    [{"candy-cost": "50", "name": "octillery", "num": "224"}]},
-     "name": "remoraid", "num": "223", "type": ["water"]}]
