@@ -8,7 +8,9 @@ let getcandy = (filterby, pokemons)=>{
   return filterCandy
 };
 
+
 export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
+
   if (filterbyType.length > 0) {
 
     let filteredType = filterbyType.map ((filtro) => pokemons.filter ((pokemon) => pokemon.type[0] === filtro));
@@ -33,7 +35,7 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 }
 
 export let searchName = (pokemons, nameToSearch) =>{
-  let foundName = pokemons.filter ((filterName) => filterName.name == nameToSearch);
+  let foundName = pokemons.filter((filterName) => filterName.name.includes(nameToSearch));
   return foundName
 }
 

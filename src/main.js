@@ -1,8 +1,7 @@
 //Ejecución general del programa.
-
+import data from './data/pokemon/pokemon.js';
 import {filterAZ, filterZA, getpokemoncito, searchName} from './data.js';
 import {pokeCard, pokeIndividualInfo} from './pokeCards.js'
-import data from './src/pokemon/pokemon.js';
 
 const poks = data;
 const pokemons = poks.pokemon;
@@ -29,26 +28,19 @@ function getAPokemon (e) {
 
 /*BUSCAR POR EL NOMBRE INDIVIDUAL DE POKEMÓN*/
 
-let searchByName = document.getElementById ("searchName");
-searchByName.onclick = function () {
+let searchByName = document.getElementById ("nameToSearch");
+searchByName.oninput = function () {
 	let nameToSearch = document.getElementById ("nameToSearch").value.toLowerCase(); 
 
     let filteredPokemon = searchName(pokemons, nameToSearch)
-    document.getElementById("pokemonss").innerHTML = filteredPokemon.map(pokeIndividualInfo).join('');
+    document.getElementById("pokemonss").innerHTML = filteredPokemon.map(pokeCard).join('');
 }
 
 /*BOTON PARA BUSCAR CON LOS FILTROS*/
-
-let searchFilters = document.getElementById ("search");
-searchFilters.onclick = function () {  
-
+function getFilters() {
 	typesToFilter.length = 0;
 	candyToFilter.length = 0;
-  
-let arrangeAZ = document.getElementById("az").checked;
-let arrangeZA = document.getElementById("za").checked;
-   
-    //Tipo de Pokemón.
+
 	let typeCheckboxes = document.getElementsByName ("tFilter");
 
 	for (let i=0; i<typeCheckboxes.length; i++) {
@@ -64,6 +56,15 @@ let arrangeZA = document.getElementById("za").checked;
 			candyToFilter.push(candyCheckboxes[i].id);
 		}		
 	}
+}
+
+
+let searchFilters = document.getElementById ("filterList");
+searchFilters.onclick = function () { 
+	getFilters()
+
+let arrangeAZ = document.getElementById("az").checked;
+let arrangeZA = document.getElementById("za").checked;
 
 	//Filtrar por orden alfabético.
 	if (arrangeAZ == true){
@@ -83,6 +84,7 @@ let arrangeZA = document.getElementById("za").checked;
 
 
 	if(uniqueTypeFilters.length == 0 && uniqueCandyFilters.length == 0){
+		document.getElementById("pokemonss").innerHTML = pokemons.map(pokeCard).join('');
 		return
 	}else if(uniqueTypeFilters.length > 0 && uniqueCandyFilters.length > 0){
 		document.getElementById("pokemonss").innerHTML = filteredPokemons.map((mapCandy) => mapCandy.map((poke) => poke.map(pokeCard).join('')).join(''))
