@@ -18,7 +18,7 @@ let pokeContainer = document.getElementById ("pokemonss");
 pokeContainer.addEventListener ("click", getAPokemon);
 
 function getAPokemon (e) {
-	if (e.target !== e.currentTarget) {     
+	if (e.target !== e.currentTarget && e.target.id !== '') { 
 		let clickedItem = e.target.id;
 		let getThisPokemon = pokemons.filter ((searchThisPokemon) => searchThisPokemon.num === clickedItem);
 		
@@ -59,7 +59,7 @@ function getFilters() {
 }
 
 
-let searchFilters = document.getElementById ("filterList");
+let searchFilters = document.getElementById("filter-list");
 searchFilters.onclick = function () { 
 	getFilters()
 
