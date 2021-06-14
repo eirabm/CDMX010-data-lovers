@@ -4,7 +4,7 @@ import {filterAZ, filterZA, getpokemoncito, searchName} from './data.js';
 import {pokeCard, pokeIndividualInfo} from './pokeCards.js'
 
 const poks = data;
-const pokemons = poks.pokemon;
+let pokemons = poks.pokemon;
 
 
 let typesToFilter = [];
@@ -49,13 +49,17 @@ function getFilters() {
 		if (typeCheckboxes[i].checked){
 			typesToFilter.push(typeCheckboxes[i].id); 
 		}
+
+		candyCheckboxes[i] ? candyCheckboxes[i].checked ? candyToFilter.push(candyCheckboxes[i].id) : '' : ''
 	}
 
-	for (let i=0; i<candyCheckboxes.length; i++) {
-		if (candyCheckboxes[i].checked){
-			candyToFilter.push(candyCheckboxes[i].id);
-		}		
+	//Filtrar por orden alfabético.
+	if (document.getElementById("az").checked){
+		pokemons = filterAZ(pokemons)
+	}else if (document.getElementById("za").checked){
+		pokemons = filterZA(pokemons)
 	}
+
 }
 
 
@@ -63,16 +67,6 @@ let searchFilters = document.getElementById("filter-list");
 searchFilters.onclick = function () { 
 	getFilters()
 
-	//Filtrar por orden alfabético.
-	if (document.getElementById("az").checked){
-		let sortedPokemons = filterAZ(pokemons)
-		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('');		
-	}
-	
-	if (document.getElementById("za").checked){
-		let sortedPokemons = filterZA(pokemons)
-		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('');		
-	}
 
 	let uniqueTypeFilters = [...new Set(typesToFilter)]		//eslint-disable-line 
 	let uniqueCandyFilters = [...new Set(candyToFilter)]	//eslint-disable-line 
