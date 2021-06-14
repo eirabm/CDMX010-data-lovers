@@ -1,14 +1,10 @@
 language: node_js
-cache:
-  directories:
-  - node_modules
-install:
-- npm install jest -g
+node_js:
+  - node
 before_script:
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-- chmod +x ./cc-test-reporter
-- ./cc-test-reporter before-build
-script:
-- nyc --reporter=lcov npm run test
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - npm install -g jest
 after_script:
-- ./cc-test-reporter after-build
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
