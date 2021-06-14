@@ -38,18 +38,18 @@ searchByName.oninput = function () {
 
 /*BOTON PARA BUSCAR CON LOS FILTROS*/
 function getFilters() {
-	typesToFilter.length = 0;
-	candyToFilter.length = 0;
+	typesToFilter.length = candyToFilter.length = 0;
 
-	let typeCheckboxes = document.getElementsByName ("tFilter");
+	let typeCheckboxes = document.getElementsByName("tFilter");
+
+	//Número de dulces.
+	let candyCheckboxes = document.getElementsByName ("cFilter");
 
 	for (let i=0; i<typeCheckboxes.length; i++) {
 		if (typeCheckboxes[i].checked){
 			typesToFilter.push(typeCheckboxes[i].id); 
 		}
 	}
-	//Número de dulces.
-	let candyCheckboxes = document.getElementsByName ("cFilter");
 
 	for (let i=0; i<candyCheckboxes.length; i++) {
 		if (candyCheckboxes[i].checked){
@@ -63,16 +63,13 @@ let searchFilters = document.getElementById("filter-list");
 searchFilters.onclick = function () { 
 	getFilters()
 
-let arrangeAZ = document.getElementById("az").checked;
-let arrangeZA = document.getElementById("za").checked;
-
 	//Filtrar por orden alfabético.
-	if (arrangeAZ == true){
+	if (document.getElementById("az").checked){
 		let sortedPokemons = filterAZ(pokemons)
 		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('');		
 	}
 	
-	if (arrangeZA == true){
+	if (document.getElementById("za").checked){
 		let sortedPokemons = filterZA(pokemons)
 		document.getElementById("pokemonss").innerHTML = sortedPokemons.map(pokeCard).join('');		
 	}
@@ -95,10 +92,9 @@ let arrangeZA = document.getElementById("za").checked;
 }
 
 let refrescar = document.getElementById("regresar");
-   
-refrescar.onclick = function () {   
 
-    document.getElementById("pokemonss").innerHTML = pokemons.map(pokeCard).join('')  
+refrescar.onclick = function () {   
+	document.getElementById("pokemonss").innerHTML = pokemons.map(pokeCard).join('')  
 }
 
 /* QUERY DEL NAVBAR */
@@ -106,7 +102,6 @@ refrescar.onclick = function () {
 let desplegar = document.getElementById("menu");
 
 desplegar.onclick = function () {
-
-      var navbar = document.getElementById("nav");      
-      navbar.classList.toggle("show");
+    var navbar = document.getElementById("nav");      
+    navbar.classList.toggle("show");
 };

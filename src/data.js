@@ -3,11 +3,12 @@ let getcandy = (filterby, pokemons)=>{
   
   let pokemonsWithEvolution = pokemons.filter ((filtro) => filtro.evolution['next-evolution']);
 
-  let filterCandy = filterby.map ((filtro) => pokemonsWithEvolution.filter ((pokemon) => 
-  pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro));
+  let filterCandy = filterby.map((filtro) => candy(filtro, pokemonsWithEvolution));
   return filterCandy
 };
 
+const candy = (filtro, pokemonsWithEvolution) => pokemonsWithEvolution.filter ((pokemon) => 
+pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro)
 
 export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 
@@ -23,8 +24,7 @@ export let getpokemoncito = (filterbyType, filterbyCandy, pokemons) => {
 
           let pokemonsWithEvolution = filteredType.map ((evoPoke) => evoPoke.filter ((filtro) => filtro.evolution['next-evolution']))
 
-          let filterCandy = filterbyCandy.map((filtro)=> pokemonsWithEvolution.map((pokeEvoCandy) => pokeEvoCandy.filter((pokemon) => 
-          pokemon.evolution['next-evolution'][0]['candy-cost'] === filtro)))
+          let filterCandy = filterbyCandy.map((filtro)=> pokemonsWithEvolution.map((pokeEvoCandy) => candy(filtro, pokeEvoCandy)))
           
           return filterCandy
         }
